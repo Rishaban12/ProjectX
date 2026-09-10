@@ -1,24 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Space Grotesk", "Inter", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: "Familjen Grotesk", Arial, sans-serif;
+  --font-sans: "Familjen Grotesk", Arial, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  --color-bg: #05050a;
-  --color-surface: #0b0b14;
-  --color-surface-2: #10101c;
-  --color-line: #1f2030;
+  /* Base surfaces */
+  --color-bg: #f6f5f3;
+  --color-surface: #fbfaf9;
+  --color-card: #ffffff;
+  --color-ink: #111111;
+  --color-ink-soft: #494846;
+  --color-ink-faint: #787673;
+  --color-line: #1111110d;
+  --color-line-strong: #1111114d;
 
-  --color-violet: #8b5cf6;
-  --color-cyan: #22d3ee;
-  --color-pink: #ec4899;
-  --color-lime: #a3e635;
+  /* Brand + pillar accents */
+  --color-blue: #2d72f0;
+  --color-orange: #e16540;
+  --color-yellow: #fbc768;
+  --color-green: #47d096;
+  --color-indigo: #10054d;
 
-  --animate-blob: blob 18s infinite;
+  /* Pastel gradient accents */
+  --color-pastel-violet: #d0b2ff;
+  --color-pastel-peach: #ffeed8;
+  --color-pastel-cyan: #99fff9;
+  --color-pastel-aqua: #c6ece9;
+  --color-pastel-pink: #ffd7f0;
+
+  --animate-blob: blob 20s infinite;
   --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
-  --animate-spin-slow: spin 14s linear infinite;
+  --animate-spin-slow: spin 16s linear infinite;
 }
 
 @keyframes blob {
@@ -44,13 +58,13 @@ html {
 
 body {
   background-color: var(--color-bg);
-  color: #e8e8f0;
+  color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-violet);
+  background: var(--color-blue);
   color: white;
 }
 
@@ -61,34 +75,27 @@ body {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-line);
+  background: var(--color-line-strong);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-violet);
+  background: var(--color-blue);
 }
 
 .text-gradient {
-  background-image: linear-gradient(90deg, var(--color-violet), var(--color-cyan) 55%, var(--color-pink));
+  background-image: linear-gradient(90deg, var(--color-blue), var(--color-indigo) 60%, var(--color-orange));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 44px 44px;
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
-}
-
-.noise {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+.card-flush {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
 }

@@ -29,14 +29,14 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
         <div
           className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 ${
-            scrolled ? 'glass shadow-lg shadow-black/20' : ''
+            scrolled ? 'border border-line bg-surface/85 shadow-sm backdrop-blur-md' : ''
           }`}
         >
           <Link to="/" className="flex items-center gap-2">
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 via-cyan-400 to-pink-500">
-              <Zap className="h-5 w-5 text-black" strokeWidth={2.5} />
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-blue">
+              <Zap className="h-5 w-5 text-white" strokeWidth={2.5} />
             </span>
-            <span className="font-display text-lg font-bold tracking-tight text-white">
+            <span className="font-display text-lg font-bold tracking-tight text-ink">
               Project<span className="text-gradient">X</span>
             </span>
           </Link>
@@ -48,7 +48,7 @@ export default function Navbar() {
                 to={link.to}
                 className={({ isActive }) =>
                   `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive ? 'bg-white/10 text-white' : 'text-white/60 hover:text-white'
+                    isActive ? 'bg-ink/5 text-ink' : 'text-ink-soft hover:text-ink'
                   }`
                 }
               >
@@ -60,7 +60,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               to="/contact"
-              className="rounded-full bg-gradient-to-r from-violet-500 via-cyan-400 to-pink-500 px-5 py-2.5 text-sm font-semibold text-black transition-transform hover:scale-105"
+              className="rounded-lg bg-blue px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Start a Project
             </Link>
@@ -68,7 +68,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink md:hidden"
             aria-label="Toggle menu"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -85,14 +85,14 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="mx-6 mt-2 rounded-2xl md:hidden"
           >
-            <div className="glass flex flex-col gap-1 rounded-2xl p-3 shadow-xl shadow-black/30">
+            <div className="card flex flex-col gap-1 rounded-2xl p-3 shadow-xl">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
                     `rounded-xl px-4 py-3 text-sm font-medium ${
-                      isActive ? 'bg-white/10 text-white' : 'text-white/70'
+                      isActive ? 'bg-ink/5 text-ink' : 'text-ink-soft'
                     }`
                   }
                 >
@@ -101,7 +101,7 @@ export default function Navbar() {
               ))}
               <Link
                 to="/contact"
-                className="mt-1 rounded-xl bg-gradient-to-r from-violet-500 via-cyan-400 to-pink-500 px-4 py-3 text-center text-sm font-semibold text-black"
+                className="mt-1 rounded-lg bg-blue px-4 py-3 text-center text-sm font-semibold text-white"
               >
                 Start a Project
               </Link>

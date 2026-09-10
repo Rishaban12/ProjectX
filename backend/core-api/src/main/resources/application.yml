@@ -1,0 +1,74 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: core-api
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/projectx}
+    username: ${SPRING_DATASOURCE_USERNAME:projectx}
+    password: ${SPRING_DATASOURCE_PASSWORD:projectx}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # Schema is owned by Flyway migrations, not Hibernate - validate only.
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+
+  cache:
+    type: redis
+
+# Application-specific settings, bound via relaxed env-var binding to the
+# exact names docker-compose.yml injects (SPRING_*, JWT_*, RAZORPAY_*,
+# CORS_ALLOWED_ORIGINS, AI_SERVICE_URL). Local defaults below let the app run
+# with just `docker compose up -d postgres redis` + `./mvnw spring-boot:run`.
+app:
+  jwt:
+    # DEV-ONLY default secret - never use this in a real deployment. Always
+    # set a real JWT_SECRET via the environment (see docker-compose.yml / .env).
+    secret: ${JWT_SECRET:dev-only-insecure-default-secret-change-me-0123456789}
+    access-ttl-minutes: ${JWT_ACCESS_TTL_MINUTES:15}
+    refresh-ttl-days: ${JWT_REFRESH_TTL_DAYS:30}
+  razorpay:
+    key-id: ${RAZORPAY_KEY_ID:}
+    key-secret: ${RAZORPAY_KEY_SECRET:}
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5180}
+  ai-service:
+    # Reserved for future use - the AI/RAG functionality lives in the separate
+    # ai-service (FastAPI) and is not called from core-api yet.
+    url: ${AI_SERVICE_URL:http://localhost:8000}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized
+
+logging:
+  level:
+    com.projectx.coreapi: INFO

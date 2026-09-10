@@ -15,14 +15,14 @@ export default function SectionHeading({
 
   return (
     <Reveal className={`flex max-w-2xl flex-col gap-4 ${alignClass}`}>
-      <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan-300 uppercase">
-        <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
+      <span className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 font-mono text-xs font-medium tracking-wide text-blue uppercase">
+        <span className="h-1.5 w-1.5 rounded-full bg-blue" />
         {eyebrow}
       </span>
-      <h2 className="font-display text-3xl font-bold text-balance text-white sm:text-4xl md:text-5xl">
+      <h2 className="font-display text-3xl font-bold tracking-tight text-balance text-ink sm:text-4xl md:text-5xl">
         {title}
       </h2>
-      {description && <p className="text-base text-white/60 sm:text-lg">{description}</p>}
+      {description && <p className="text-base text-ink-soft sm:text-lg">{description}</p>}
     </Reveal>
   )
 }

@@ -29,7 +29,9 @@ export type Service = {
   title: string
   description: string
   points: string[]
-  accent: string
+  accentBg: string
+  accentIcon: string
+  accentSoft: string
   to: string
 }
 
@@ -40,7 +42,9 @@ export const SERVICES: Service[] = [
     description:
       'Fast, conversion-ready websites for small and growing industries — built to look bigger than your budget.',
     points: ['Custom UI/UX design', 'E-commerce & booking', 'SEO + performance tuned', 'Ongoing support'],
-    accent: 'from-violet-500 to-cyan-400',
+    accentBg: 'bg-blue',
+    accentIcon: 'text-white',
+    accentSoft: 'bg-blue/25',
     to: '/services#business',
   },
   {
@@ -49,7 +53,9 @@ export const SERVICES: Service[] = [
     description:
       'Mini, major & final-year projects across web, AI/ML, IoT and app development — built with you, not just for you.',
     points: ['1:1 mentorship', 'Report & documentation', 'Viva / demo prep', 'Source code walkthrough'],
-    accent: 'from-cyan-400 to-emerald-400',
+    accentBg: 'bg-green',
+    accentIcon: 'text-white',
+    accentSoft: 'bg-green/25',
     to: '/services#students',
   },
   {
@@ -58,7 +64,9 @@ export const SERVICES: Service[] = [
     description:
       'Live sessions on coding foundations, AI adoption & adaptiveness — for students, teams and institutions.',
     points: ['Coding bootcamps', 'AI invasion workshops', 'Hands-on labs', 'Certificates of completion'],
-    accent: 'from-pink-500 to-violet-500',
+    accentBg: 'bg-orange',
+    accentIcon: 'text-white',
+    accentSoft: 'bg-orange/25',
     to: '/learning',
   },
   {
@@ -67,7 +75,9 @@ export const SERVICES: Service[] = [
     description:
       'ATS-optimized resumes and career positioning built around the technology you are adapting to.',
     points: ['ATS-friendly design', 'LinkedIn optimization', 'Mock interviews', '48-hour turnaround'],
-    accent: 'from-emerald-400 to-lime-400',
+    accentBg: 'bg-yellow',
+    accentIcon: 'text-ink',
+    accentSoft: 'bg-yellow/25',
     to: '/resume',
   },
 ]

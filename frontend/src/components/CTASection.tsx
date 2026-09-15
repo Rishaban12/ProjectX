@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import GalaxyBackdrop from './GalaxyBackdrop'
 import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 
@@ -16,11 +17,11 @@ export default function CTASection({
 }) {
   return (
     <section className="mx-auto max-w-7xl px-6 py-20">
-      <Reveal className="relative overflow-hidden rounded-2xl border border-line bg-surface px-8 py-16 text-center sm:px-16">
-        <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-pastel-violet/40 blur-[100px]" />
-        <div className="relative flex flex-col items-center gap-6">
-          <h2 className="font-display max-w-2xl text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
-          <p className="max-w-xl text-ink-soft">{description}</p>
+      <Reveal className="relative overflow-hidden rounded-2xl border border-white/10 px-8 py-16 text-center sm:px-16">
+        <GalaxyBackdrop />
+        <div className="relative z-10 flex flex-col items-center gap-6">
+          <h2 className="font-display max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+          <p className="max-w-xl text-white/70">{description}</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Magnetic>
               <Link
@@ -34,7 +35,7 @@ export default function CTASection({
             <Magnetic>
               <Link
                 to={secondary.to}
-                className="rounded-lg border border-line-strong px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ink/5"
+                className="rounded-lg border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 {secondary.label}
               </Link>

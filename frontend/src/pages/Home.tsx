@@ -7,12 +7,12 @@ import Magnetic from '../components/Magnetic'
 import Marquee from '../components/Marquee'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
-import ServiceCard from '../components/ServiceCard'
+import ServicesShowcase from '../components/ServicesShowcase'
 import { AnimatedSpan, Terminal, TypingAnimation } from '../components/Terminal'
 import TreeGrowth from '../components/TreeGrowth'
 import { AnimatedTestimonials } from '../components/ui/animated-testimonials'
 import RotatingEarth from '../components/ui/wireframe-dotted-globe'
-import { PROCESS, SERVICES, STATS, TESTIMONIALS } from '../lib/data'
+import { PROCESS, STATS, TESTIMONIALS } from '../lib/data'
 
 const TECH = [
   'React',
@@ -137,19 +137,7 @@ export default function Home() {
 
       <Marquee items={TECH} />
 
-      {/* Services */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeading
-          eyebrow="What we do"
-          title="Four services. One studio built to ship."
-          description="Pick a lane, or combine them — most of our clients start with a website and end up learning to run it themselves."
-        />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service, i) => (
-            <ServiceCard key={service.title} service={service} delay={i * 0.08} />
-          ))}
-        </div>
-      </section>
+      <ServicesShowcase />
 
       {/* Process — grows in as a tree while you scroll */}
       <section className="mx-auto max-w-7xl px-6 py-24">

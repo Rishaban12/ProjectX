@@ -121,9 +121,7 @@ export default function Resume() {
                 </ul>
                 <Link
                   to="/contact"
-                  className={`rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-105 ${
-                    pkg.highlighted ? 'bg-yellow text-bg' : 'border border-line-strong text-ink'
-                  }`}
+                  className={`text-center ${pkg.highlighted ? 'btn-primary' : 'btn-secondary'}`}
                 >
                   Choose {pkg.name}
                 </Link>

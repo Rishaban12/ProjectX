@@ -1,9 +1,8 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowRight, Play, Sparkles } from 'lucide-react'
+import { ArrowDown, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Counter from '../components/Counter'
 import CTASection from '../components/CTASection'
-import Magnetic from '../components/Magnetic'
 import Marquee from '../components/Marquee'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
@@ -36,29 +35,18 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative min-h-[92vh] overflow-hidden px-6 pt-32 pb-20">
-        <div className="relative z-10 mx-auto grid min-h-[calc(92vh-8rem)] max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-8">
+        <div className="relative z-10 mx-auto grid max-w-7xl items-start gap-10 lg:grid-cols-2 lg:gap-8">
           <motion.div
             style={{ opacity: heroOpacity, y: heroY }}
             className="flex flex-col items-start text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 text-xs font-medium text-ink-soft"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-ink-faint" />
-              Websites &middot; Student Projects &middot; Tech Learning &middot; Careers
-            </motion.div>
-
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display max-w-xl text-5xl leading-[0.92] text-ink sm:text-6xl lg:text-7xl"
+              className="font-display max-w-xl text-5xl leading-[1.08] font-semibold tracking-[-0.045em] text-ink sm:text-6xl lg:text-[4.35rem]"
             >
-              We build your <span className="text-yellow">website</span>, your{' '}
-              <span className="text-yellow">project</span>, and your{' '}
+              We build your website, your project, and your{' '}
               <span className="text-yellow">next skill</span>.
             </motion.h1>
 
@@ -66,7 +54,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 max-w-lg text-lg text-ink-soft"
+              className="mt-8 max-w-lg text-[15px] leading-7 text-ink-soft sm:text-base"
             >
               ProjectX is a technology studio for growing businesses and ambitious students — we design websites,
               engineer student projects, run hands-on AI &amp; coding sessions, and build the resumes that get you hired.
@@ -78,24 +66,13 @@ export default function Home() {
               transition={{ duration: 0.4, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 flex flex-wrap items-center justify-start gap-4"
             >
-              <Magnetic>
-                <Link
-                  to="/contact"
-                  className="btn-primary group px-7 py-4 hover:scale-105"
-                >
-                  Start Your Project
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Magnetic>
-              <Magnetic>
-                <Link
-                  to="/learning"
-                  className="group inline-flex items-center gap-2 rounded-lg border border-line-strong px-7 py-4 text-sm font-semibold text-ink transition-colors hover:bg-white/5"
-                >
-                  <Play className="h-4 w-4 text-ink" />
-                  Explore Learning Hub
-                </Link>
-              </Magnetic>
+              <Link to="/contact" className="btn-primary group">
+                Start Your Project
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+              <Link to="/learning" className="btn-secondary">
+                Explore Learning Hub
+              </Link>
             </motion.div>
 
             <motion.div
@@ -115,7 +92,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[520px]">
+          <div className="relative mx-auto aspect-square w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[520px] lg:justify-self-end">
             <RotatingEarth
               width={520}
               height={520}
@@ -167,10 +144,10 @@ export default function Home() {
             </p>
             <Link
               to="/learning"
-              className="btn-primary group hover:scale-105"
+              className="btn-primary group"
             >
               See Learning Tracks
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>
           <Reveal delay={0.1} className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-surface p-6 sm:p-10">

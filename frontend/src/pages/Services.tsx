@@ -2,7 +2,6 @@ import { Check, ShoppingBag, Sparkles } from 'lucide-react'
 import { Boxes, Globe2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
-import Magnetic from '../components/Magnetic'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 
@@ -165,16 +164,14 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <Magnetic strength={0.2} className="relative w-full">
-                  <Link
-                    to="/contact"
-                    className={`flex w-full items-center justify-center rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-105 ${
-                      tier.highlighted ? 'bg-yellow text-bg' : 'border border-line-strong text-ink'
-                    }`}
-                  >
-                    Choose {tier.name}
-                  </Link>
-                </Magnetic>
+                <Link
+                  to="/contact"
+                  className={`flex w-full items-center justify-center ${
+                    tier.highlighted ? 'btn-primary' : 'btn-secondary'
+                  }`}
+                >
+                  Choose {tier.name}
+                </Link>
               </div>
             </Reveal>
           ))}
@@ -233,7 +230,7 @@ export default function Services() {
             </div>
             <Link
               to="/contact"
-              className="btn-primary mt-2 hover:scale-105"
+              className="btn-primary mt-2"
             >
               Discuss Your Project Idea
             </Link>

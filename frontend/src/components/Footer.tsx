@@ -18,7 +18,7 @@ export default function Footer() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-line text-ink-soft">
                 <Zap className="h-5 w-5" strokeWidth={2} />
               </span>
-              <span className="font-display text-lg text-ink">
+              <span className="text-[17px] font-semibold tracking-[-0.03em] text-ink">
                 Project<span className="text-yellow">X</span>
               </span>
             </Link>

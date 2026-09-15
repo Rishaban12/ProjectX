@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import Magnetic from './Magnetic'
 import { NAV_LINKS } from '../lib/data'
 
 export default function Navbar() {
@@ -37,7 +36,7 @@ export default function Navbar() {
           <span className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-line text-ink-soft">
             <Zap className="h-5 w-5" strokeWidth={2} />
           </span>
-          <span className="font-display text-lg tracking-tight text-ink">
+          <span className="text-[17px] font-semibold tracking-[-0.03em] text-ink">
             Project<span className="text-yellow">X</span>
           </span>
         </Link>
@@ -48,8 +47,8 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                  isActive ? 'text-yellow' : 'text-ink-soft hover:text-ink'
+                `rounded-full px-4 py-2 text-[13px] font-medium tracking-[-0.01em] transition-colors ${
+                  isActive ? 'text-ink' : 'text-ink-soft hover:text-ink'
                 }`
               }
             >
@@ -60,11 +59,9 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2 md:gap-3">
           <div className="hidden md:block">
-            <Magnetic strength={0.3}>
-              <Link to="/contact" className="btn-primary px-5 py-2.5 hover:scale-105">
-                Start a Project
-              </Link>
-            </Magnetic>
+            <Link to="/contact" className="btn-primary px-5 py-2.5">
+              Start a Project
+            </Link>
           </div>
           <button
             onClick={() => setOpen((v) => !v)}

@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import GalaxyBackdrop from './GalaxyBackdrop'
-import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 
 export default function CTASection({
@@ -20,26 +19,18 @@ export default function CTASection({
       <Reveal className="relative overflow-hidden rounded-2xl border border-white/10 px-8 py-16 text-center sm:px-16">
         <GalaxyBackdrop />
         <div className="relative z-10 flex flex-col items-center gap-6">
-          <h2 className="font-display max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
-          <p className="max-w-xl text-white/70">{description}</p>
+          <h2 className="font-display max-w-2xl text-3xl font-semibold tracking-[-0.04em] text-white sm:text-4xl lg:text-[2.75rem]">
+            {title}
+          </h2>
+          <p className="max-w-xl text-[15px] leading-7 text-white/70">{description}</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Magnetic>
-              <Link
-                to={primary.to}
-                className="btn-primary group hover:scale-105"
-              >
-                {primary.label}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Magnetic>
-            <Magnetic>
-              <Link
-                to={secondary.to}
-                className="rounded-lg border border-white/25 px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-              >
-                {secondary.label}
-              </Link>
-            </Magnetic>
+            <Link to={primary.to} className="btn-primary group">
+              {primary.label}
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+            <Link to={secondary.to} className="btn-secondary btn-secondary-on-dark">
+              {secondary.label}
+            </Link>
           </div>
         </div>
       </Reveal>

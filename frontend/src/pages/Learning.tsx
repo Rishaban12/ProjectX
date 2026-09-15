@@ -71,10 +71,10 @@ export default function Learning() {
               </div>
               <Link
                 to="/contact"
-                className="btn-primary group mt-2 hover:scale-105"
+                className="btn-primary group mt-2"
               >
                 Reserve Your Seat
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
             <div className="relative flex items-center justify-center">

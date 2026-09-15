@@ -2,6 +2,7 @@ import { Check, ShoppingBag, Sparkles } from 'lucide-react'
 import { Boxes, Globe2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
+import Magnetic from '../components/Magnetic'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 
@@ -75,7 +76,7 @@ export default function Services() {
       <section id="business" className="mx-auto max-w-7xl scroll-mt-28 px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <Reveal className="flex flex-col gap-5">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue text-white">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
               <Globe2 className="h-6 w-6" />
             </span>
             <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -96,7 +97,7 @@ export default function Services() {
                 '30-day post-launch support',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm text-ink-soft">
-                  <Check className="h-4 w-4 shrink-0 text-blue" />
+                  <Check className="h-4 w-4 shrink-0 text-ink-faint" />
                   {item}
                 </li>
               ))}
@@ -122,40 +123,58 @@ export default function Services() {
         </div>
 
         {/* Pricing */}
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {BUSINESS_TIERS.map((tier) => (
-            <Reveal key={tier.name}>
+        <div className="mt-20 grid gap-6 md:grid-cols-3 md:items-end">
+          {BUSINESS_TIERS.map((tier, i) => (
+            <Reveal key={tier.name} delay={i * 0.08} y={tier.highlighted ? 40 : 22}>
               <div
-                className={`relative flex h-full flex-col gap-6 rounded-2xl p-7 ${
-                  tier.highlighted ? 'border-2 border-blue/40 bg-blue/5' : 'card'
+                className={`group relative flex h-full flex-col gap-6 overflow-hidden rounded-2xl p-7 transition-transform duration-300 sm:p-8 ${
+                  tier.highlighted
+                    ? 'border border-yellow/50 bg-gradient-to-b from-yellow/10 to-transparent shadow-[0_30px_80px_-30px_rgba(255,212,0,0.35)] md:-translate-y-6 md:scale-[1.03]'
+                    : 'card hover:-translate-y-1'
                 }`}
               >
+                {/* ghost index number, bleeding off the corner */}
+                <span className="font-display pointer-events-none absolute -top-8 -right-3 text-[8rem] leading-none font-bold text-ink/5 select-none sm:text-[9rem]">
+                  0{i + 1}
+                </span>
+
                 {tier.highlighted && (
-                  <span className="absolute -top-3 left-7 flex items-center gap-1 rounded-full bg-blue px-3 py-1 text-xs font-semibold text-white">
+                  <span className="relative flex w-fit items-center gap-1 self-end rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-bg">
                     <Sparkles className="h-3 w-3" /> {tier.tag}
                   </span>
                 )}
-                <div>
-                  {!tier.highlighted && <p className="mb-1 text-xs text-ink-faint">{tier.tag}</p>}
-                  <h3 className="font-display text-xl font-bold text-ink">{tier.name}</h3>
-                  <p className="mt-2 text-3xl font-bold text-ink">{tier.price}</p>
+
+                <div className="relative flex flex-col gap-1">
+                  {!tier.highlighted && (
+                    <p className="font-mono text-xs tracking-widest text-ink-faint uppercase">{tier.tag}</p>
+                  )}
+                  <h3 className="font-display text-2xl font-bold text-ink">{tier.name}</h3>
                 </div>
-                <ul className="flex flex-1 flex-col gap-3">
+
+                <div className="relative flex items-baseline gap-2 border-y border-line py-5">
+                  <span className="font-display text-4xl font-bold text-ink sm:text-5xl">{tier.price}</span>
+                  {tier.price !== 'Custom' && <span className="text-sm text-ink-faint">one-time</span>}
+                </div>
+
+                <ul className="relative flex flex-1 flex-col gap-3">
                   {tier.features.map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-ink-soft">
-                      <Check className="h-4 w-4 shrink-0 text-blue" />
+                      <Check className="h-4 w-4 shrink-0 text-ink-faint" />
                       {f}
                     </li>
                   ))}
                 </ul>
-                <Link
-                  to="/contact"
-                  className={`rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-105 ${
-                    tier.highlighted ? 'bg-blue text-white' : 'border border-line-strong text-ink'
-                  }`}
-                >
-                  Choose {tier.name}
-                </Link>
+
+                <Magnetic strength={0.2} className="relative w-full">
+                  <Link
+                    to="/contact"
+                    className={`flex w-full items-center justify-center rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-105 ${
+                      tier.highlighted ? 'bg-yellow text-bg' : 'border border-line-strong text-ink'
+                    }`}
+                  >
+                    Choose {tier.name}
+                  </Link>
+                </Magnetic>
               </div>
             </Reveal>
           ))}
@@ -181,7 +200,7 @@ export default function Services() {
                 <ul className="flex flex-col gap-2">
                   {STUDENT_INCLUDES.map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-ink-soft">
-                      <Check className="h-4 w-4 shrink-0 text-green" />
+                      <Check className="h-4 w-4 shrink-0 text-ink-faint" />
                       {f}
                     </li>
                   ))}
@@ -190,7 +209,7 @@ export default function Services() {
             </div>
           </Reveal>
           <Reveal className="order-1 flex flex-col gap-5 md:order-2">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-green text-white">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
               <Boxes className="h-6 w-6" />
             </span>
             <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">Student tech projects</h2>
@@ -214,7 +233,7 @@ export default function Services() {
             </div>
             <Link
               to="/contact"
-              className="mt-2 inline-flex w-fit items-center gap-2 rounded-lg bg-green px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+              className="btn-primary mt-2 hover:scale-105"
             >
               Discuss Your Project Idea
             </Link>

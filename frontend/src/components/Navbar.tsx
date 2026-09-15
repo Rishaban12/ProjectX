@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X, Zap } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import Magnetic from './Magnetic'
 import { NAV_LINKS } from '../lib/data'
 
 export default function Navbar() {
@@ -21,51 +22,50 @@ export default function Navbar() {
   }, [location.pathname])
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-2' : 'py-4'
-      }`}
-    >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
-        <div
-          className={`flex w-full items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 ${
-            scrolled ? 'border border-line bg-surface/85 shadow-sm backdrop-blur-md' : ''
-          }`}
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div
+        className={`flex w-full items-center justify-between px-6 py-3 transition-colors duration-300 ${
+          scrolled ? 'border-b border-line bg-surface/90 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.6)] backdrop-blur-xl' : 'bg-surface/80 backdrop-blur-xl'
+        }`}
+      >
+        <Link
+          to="/"
+          aria-label="ProjectX home"
+          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+          className="relative z-10 flex items-center gap-2"
         >
-          <Link to="/" className="flex items-center gap-2">
-            <span className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-blue">
-              <Zap className="h-5 w-5 text-white" strokeWidth={2.5} />
-            </span>
-            <span className="font-display text-lg font-bold tracking-tight text-ink">
-              Project<span className="text-gradient">X</span>
-            </span>
-          </Link>
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-xl border border-line text-ink-soft">
+            <Zap className="h-5 w-5" strokeWidth={2} />
+          </span>
+          <span className="font-display text-lg tracking-tight text-ink">
+            Project<span className="text-yellow">X</span>
+          </span>
+        </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            {NAV_LINKS.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    isActive ? 'bg-ink/5 text-ink' : 'text-ink-soft hover:text-ink'
-                  }`
-                }
-              >
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <Link
-              to="/contact"
-              className="rounded-lg bg-blue px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
+        <nav className="hidden items-center gap-1 md:flex">
+          {NAV_LINKS.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isActive ? 'text-yellow' : 'text-ink-soft hover:text-ink'
+                }`
+              }
             >
-              Start a Project
-            </Link>
-          </div>
+              {link.label}
+            </NavLink>
+          ))}
+        </nav>
 
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="hidden md:block">
+            <Magnetic strength={0.3}>
+              <Link to="/contact" className="btn-primary px-5 py-2.5 hover:scale-105">
+                Start a Project
+              </Link>
+            </Magnetic>
+          </div>
           <button
             onClick={() => setOpen((v) => !v)}
             className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink md:hidden"
@@ -83,26 +83,23 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="mx-6 mt-2 rounded-2xl md:hidden"
+            className="border-b border-line bg-surface/95 backdrop-blur-xl md:hidden"
           >
-            <div className="card flex flex-col gap-1 rounded-2xl p-3 shadow-xl">
+            <div className="flex flex-col gap-1 p-3">
               {NAV_LINKS.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
                     `rounded-xl px-4 py-3 text-sm font-medium ${
-                      isActive ? 'bg-ink/5 text-ink' : 'text-ink-soft'
+                      isActive ? 'text-yellow' : 'text-ink-soft'
                     }`
                   }
                 >
                   {link.label}
                 </NavLink>
               ))}
-              <Link
-                to="/contact"
-                className="mt-1 rounded-lg bg-blue px-4 py-3 text-center text-sm font-semibold text-white"
-              >
+              <Link to="/contact" className="btn-primary mt-1 px-4 py-3">
                 Start a Project
               </Link>
             </div>

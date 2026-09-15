@@ -1,45 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Familjen Grotesk", Arial, sans-serif;
-  --font-sans: "Familjen Grotesk", Arial, sans-serif;
+  --font-display: "Barlow Condensed", Arial, sans-serif;
+  --font-sans: "Inter", Arial, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Base surfaces */
-  --color-bg: #f6f5f3;
-  --color-surface: #fbfaf9;
-  --color-card: #ffffff;
-  --color-ink: #111111;
-  --color-ink-soft: #494846;
-  --color-ink-faint: #787673;
-  --color-line: #1111110d;
-  --color-line-strong: #1111114d;
+  /* Base surfaces — light */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-card: rgba(17, 18, 24, 0.04);
+  --color-ink: #14151c;
+  --color-ink-soft: #3f4354;
+  --color-ink-faint: #6d7285;
+  --color-line: rgba(17, 18, 24, 0.1);
+  --color-line-strong: rgba(17, 18, 24, 0.18);
 
-  /* Brand + pillar accents */
-  --color-blue: #2d72f0;
-  --color-orange: #e16540;
-  --color-yellow: #fbc768;
-  --color-green: #47d096;
-  --color-indigo: #10054d;
+  /* Brand + pillar accents — lemon yellow lead, others kept for rare use */
+  --color-blue: #5b8cff;
+  --color-orange: #ff8a5c;
+  --color-yellow: #ffd400;
+  --color-green: #3ee6a8;
+  --color-indigo: #8b6bff;
 
-  /* Pastel gradient accents */
-  --color-pastel-violet: #d0b2ff;
-  --color-pastel-peach: #ffeed8;
-  --color-pastel-cyan: #99fff9;
-  --color-pastel-aqua: #c6ece9;
-  --color-pastel-pink: #ffd7f0;
+  /* Nebula / gradient accents */
+  --color-pastel-violet: #9b7bff;
+  --color-pastel-peach: #ffb98a;
+  --color-pastel-cyan: #34e2f0;
+  --color-pastel-aqua: #38d9c9;
+  --color-pastel-pink: #ff7fc0;
 
-  --animate-blob: blob 20s infinite;
+  /* shadcn semantic aliases */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-ink);
+  --color-muted: #f4f4f4;
+  --color-muted-foreground: var(--color-ink-faint);
+  --color-destructive: #f87171;
+  --color-destructive-foreground: #ffffff;
+  --color-border: var(--color-line);
+  --color-input: var(--color-line-strong);
+  --color-ring: var(--color-yellow);
+  --color-primary: var(--color-yellow);
+  --color-primary-foreground: #111111;
+  --color-secondary: var(--color-surface);
+  --color-secondary-foreground: var(--color-ink);
+  --color-accent: rgba(17, 18, 24, 0.05);
+  --color-accent-foreground: var(--color-ink);
+  --radius: 0.5rem;
+
+  --animate-blob: blob 22s infinite;
   --animate-marquee: marquee 32s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
-  --animate-spin-slow: spin 16s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-pulse-soft: pulse-soft 3.5s ease-in-out infinite;
 }
 
 @keyframes blob {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(4%, -6%) scale(1.08); }
-  50% { transform: translate(-3%, 3%) scale(0.95); }
-  75% { transform: translate(-6%, -3%) scale(1.05); }
+  25% { transform: translate(4%, -6%) scale(1.1); }
+  50% { transform: translate(-3%, 3%) scale(0.92); }
+  75% { transform: translate(-6%, -3%) scale(1.06); }
 }
 
 @keyframes marquee {
@@ -52,8 +71,14 @@
   50% { transform: translateY(-14px); }
 }
 
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
@@ -63,9 +88,37 @@ body {
   overflow-x: hidden;
 }
 
+/* Film-grain overlay for a premium, non-flat surface */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.font-display {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
 ::selection {
-  background: var(--color-blue);
-  color: white;
+  background: var(--color-yellow);
+  color: #111111;
+}
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor body,
+  html.has-custom-cursor *,
+  html.has-custom-cursor canvas,
+  html.has-custom-cursor svg {
+    cursor: none !important;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -79,23 +132,92 @@ body {
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-blue);
+  background: var(--color-yellow);
 }
 
 .text-gradient {
-  background-image: linear-gradient(90deg, var(--color-blue), var(--color-indigo) 60%, var(--color-orange));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: var(--color-yellow);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--color-yellow);
+  padding: 0.7rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #111111;
+  transition: transform 180ms ease, filter 180ms ease, box-shadow 180ms ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 0 28px rgba(255, 212, 0, 0.35);
 }
 
 .card {
   background: var(--color-card);
   border: 1px solid var(--color-line);
-  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.04) inset,
+    0 24px 48px -28px rgba(0, 0, 0, 0.65);
+}
+
+.card:hover {
+  border-color: rgba(17, 18, 24, 0.22);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
+    0 0 24px rgba(255, 212, 0, 0.16),
+    0 24px 48px -28px rgba(0, 0, 0, 0.18);
 }
 
 .card-flush {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
+}
+
+@keyframes hero-globe-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-lb-pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.hero-globe-stage {
+  transform-origin: center;
+  animation: hero-globe-in 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-lb-core {
+  animation: hero-lb-pulse 2.2s ease-in-out infinite;
+}
+
+.earth-pin {
+  opacity: 0;
+  pointer-events: none;
 }

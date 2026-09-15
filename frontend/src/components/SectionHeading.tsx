@@ -15,8 +15,8 @@ export default function SectionHeading({
 
   return (
     <Reveal className={`flex max-w-2xl flex-col gap-4 ${alignClass}`}>
-      <span className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 font-mono text-xs font-medium tracking-wide text-blue uppercase">
-        <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+      <span className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-card px-4 py-1.5 font-mono text-xs font-medium tracking-wide text-yellow uppercase">
+        <span className="h-1.5 w-1.5 rounded-full bg-yellow" />
         {eyebrow}
       </span>
       <h2 className="font-display text-3xl font-bold tracking-tight text-balance text-ink sm:text-4xl md:text-5xl">

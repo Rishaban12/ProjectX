@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import Magnetic from './Magnetic'
 import Reveal from './Reveal'
 
 export default function CTASection({
@@ -21,19 +22,23 @@ export default function CTASection({
           <h2 className="font-display max-w-2xl text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</h2>
           <p className="max-w-xl text-ink-soft">{description}</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to={primary.to}
-              className="group inline-flex items-center gap-2 rounded-lg bg-blue px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-105"
-            >
-              {primary.label}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to={secondary.to}
-              className="rounded-lg border border-line-strong px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ink/5"
-            >
-              {secondary.label}
-            </Link>
+            <Magnetic>
+              <Link
+                to={primary.to}
+                className="btn-primary group hover:scale-105"
+              >
+                {primary.label}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Magnetic>
+            <Magnetic>
+              <Link
+                to={secondary.to}
+                className="rounded-lg border border-line-strong px-6 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-ink/5"
+              >
+                {secondary.label}
+              </Link>
+            </Magnetic>
           </div>
         </div>
       </Reveal>

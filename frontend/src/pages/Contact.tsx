@@ -1,7 +1,6 @@
-import { AlertCircle, CheckCircle2, Clock, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { AlertCircle, Check, CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
-import Reveal from '../components/Reveal'
-import SectionHeading from '../components/SectionHeading'
+import { EARTH_PINS } from '../lib/earthPins'
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined
 
@@ -9,23 +8,34 @@ type SubmitStatus = 'idle' | 'sending' | 'sent' | 'error'
 
 const INTERESTS = ['Business Website', 'Student Project', 'Learning Session', 'Resume Studio', 'Something else']
 
-const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'hello@projectx.dev' },
-  { icon: Phone, label: 'Phone', value: '+91 98765 43210' },
-  { icon: MapPin, label: 'Studio', value: 'Bengaluru, India (remote-first)' },
-  { icon: Clock, label: 'Hours', value: 'Mon–Sat, 10am – 7pm IST' },
+const POINTS = [
+  'A reply within one business day',
+  'Clear next steps for websites, student projects, or learning',
+  'Honest scope and pricing — no templates copy-pasted blindly',
+  'A 15-minute call if you’d rather talk it through',
 ]
 
+const inputClass =
+  'h-11 w-full rounded-xl border border-line bg-bg px-3.5 text-sm text-ink outline-none placeholder:text-ink-faint focus:border-line-strong'
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', interest: INTERESTS[0], message: '' })
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    interest: INTERESTS[0],
+    message: '',
+  })
   const [status, setStatus] = useState<SubmitStatus>('idle')
 
   const update = (key: keyof typeof form, value: string) => setForm((f) => ({ ...f, [key]: value }))
+  const fullName = `${form.firstName} ${form.lastName}`.trim()
 
   const sendViaMailto = () => {
-    const subject = encodeURIComponent(`New enquiry: ${form.interest} — ${form.name}`)
+    const subject = encodeURIComponent(`New enquiry: ${form.interest} — ${fullName}`)
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nInterested in: ${form.interest}\n\nMessage:\n${form.message}`,
+      `Name: ${fullName}\nEmail: ${form.email}\nPhone: ${form.phone || '—'}\nInterested in: ${form.interest}\n\nMessage:\n${form.message}`,
     )
     window.location.href = `mailto:hello@projectx.dev?subject=${subject}&body=${body}`
   }
@@ -46,10 +56,11 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `New enquiry: ${form.interest} — ${form.name}`,
+          subject: `New enquiry: ${form.interest} — ${fullName}`,
           from_name: 'ProjectX website',
-          name: form.name,
+          name: fullName,
           email: form.email,
+          phone: form.phone,
           interest: form.interest,
           message: form.message,
         }),
@@ -57,7 +68,7 @@ export default function Contact() {
       const data = await res.json()
       if (data.success) {
         setStatus('sent')
-        setForm({ name: '', email: '', interest: INTERESTS[0], message: '' })
+        setForm({ firstName: '', lastName: '', email: '', phone: '', interest: INTERESTS[0], message: '' })
       } else {
         setStatus('error')
       }
@@ -67,128 +78,148 @@ export default function Contact() {
   }
 
   return (
-    <>
-      <section className="mx-auto max-w-5xl px-6 pt-40 pb-16 text-center">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Tell us what you're building"
-          description="Fill in the form and we'll get back within one business day — or reach us directly below."
-        />
-      </section>
+    <section className="px-6 pt-32 pb-24">
+      <div className="mx-auto max-w-6xl rounded-[2rem] border border-line p-6 sm:p-10 lg:p-14">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="flex max-w-xl flex-col text-left">
+            <h1 className="font-display text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
+              A clearer way to start what you’re building.
+            </h1>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24">
-        <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
-          <Reveal className="card rounded-2xl p-7 sm:p-10">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-              <div className="grid gap-6 sm:grid-cols-2">
-                <label className="flex flex-col gap-2 text-sm text-ink-soft">
-                  Name
+            <p className="mt-6 text-sm font-medium text-ink">What to expect on the call</p>
+            <ul className="mt-4 flex flex-col gap-3">
+              {POINTS.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm leading-relaxed text-ink-soft">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" strokeWidth={2} />
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10">
+              <p className="text-xs text-ink-faint">Endorsed by operators we meet</p>
+              <div className="mt-3 flex items-center gap-3">
+                <div className="flex -space-x-2">
+                  {EARTH_PINS.map((person) => (
+                    <img
+                      key={person.id}
+                      src={person.image}
+                      alt={person.city}
+                      className="h-8 w-8 rounded-full border-2 border-bg object-cover"
+                    />
+                  ))}
+                </div>
+                <p className="max-w-[14rem] text-xs leading-snug text-ink-faint">
+                  The studio across Bengaluru, Chennai, Thanjavur &amp; Mannargudi
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-line bg-surface/80 p-5 sm:p-6">
+            <h2 className="font-display text-lg font-semibold text-ink">Book a live, 15-minute conversation</h2>
+
+            <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                  First name*
                   <input
                     required
-                    value={form.name}
-                    onChange={(e) => update('name', e.target.value)}
-                    placeholder="Your full name"
-                    className="rounded-lg border border-line-strong bg-surface px-4 py-3 text-ink outline-none placeholder:text-ink-faint focus:border-blue"
+                    value={form.firstName}
+                    onChange={(e) => update('firstName', e.target.value)}
+                    className={inputClass}
                   />
                 </label>
-                <label className="flex flex-col gap-2 text-sm text-ink-soft">
-                  Email
+                <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                  Last name*
                   <input
                     required
-                    type="email"
-                    value={form.email}
-                    onChange={(e) => update('email', e.target.value)}
-                    placeholder="you@email.com"
-                    className="rounded-lg border border-line-strong bg-surface px-4 py-3 text-ink outline-none placeholder:text-ink-faint focus:border-blue"
+                    value={form.lastName}
+                    onChange={(e) => update('lastName', e.target.value)}
+                    className={inputClass}
                   />
                 </label>
               </div>
 
-              <label className="flex flex-col gap-2 text-sm text-ink-soft">
-                I'm interested in
-                <div className="flex flex-wrap gap-2">
-                  {INTERESTS.map((interest) => (
-                    <button
-                      type="button"
-                      key={interest}
-                      onClick={() => update('interest', interest)}
-                      className={`rounded-full border px-4 py-2 text-xs font-medium transition-colors ${
-                        form.interest === interest
-                          ? 'border-transparent bg-blue text-white'
-                          : 'border-line-strong bg-surface text-ink-soft hover:text-ink'
-                      }`}
-                    >
-                      {interest}
-                    </button>
-                  ))}
-                </div>
-              </label>
-
-              <label className="flex flex-col gap-2 text-sm text-ink-soft">
-                Message
-                <textarea
+              <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                Work email*
+                <input
                   required
-                  rows={5}
-                  value={form.message}
-                  onChange={(e) => update('message', e.target.value)}
-                  placeholder="Tell us about your idea, timeline, and budget..."
-                  className="resize-none rounded-lg border border-line-strong bg-surface px-4 py-3 text-ink outline-none placeholder:text-ink-faint focus:border-blue"
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => update('email', e.target.value)}
+                  className={inputClass}
                 />
               </label>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                  Phone
+                  <input
+                    value={form.phone}
+                    onChange={(e) => update('phone', e.target.value)}
+                    placeholder="+91"
+                    className={inputClass}
+                  />
+                </label>
+                <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                  I’m interested in*
+                  <select
+                    required
+                    value={form.interest}
+                    onChange={(e) => update('interest', e.target.value)}
+                    className={`${inputClass} appearance-none`}
+                  >
+                    {INTERESTS.map((interest) => (
+                      <option key={interest} value={interest}>
+                        {interest}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              </div>
+
+              <label className="flex flex-col gap-1.5 text-xs text-ink-faint">
+                How can we help?*
+                <textarea
+                  required
+                  rows={4}
+                  value={form.message}
+                  onChange={(e) => update('message', e.target.value)}
+                  className="w-full resize-none rounded-xl border border-line bg-bg px-3.5 py-3 text-sm text-ink outline-none placeholder:text-ink-faint focus:border-line-strong"
+                />
+              </label>
+
+              <p className="text-[11px] leading-relaxed text-ink-faint">
+                We only use this information to get back about your enquiry. You can unsubscribe from follow-ups anytime.
+              </p>
 
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="group inline-flex items-center justify-center gap-2 rounded-lg bg-blue px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-105 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
+                className="btn-primary mt-1 h-11 w-full disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {status === 'sending' ? 'Sending…' : 'Send Message'}
-                <Send className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {status === 'sending' ? 'Sending…' : 'Send message'}
               </button>
 
               {status === 'sent' && (
-                <p className="flex items-center gap-2 text-sm text-green">
+                <p className="flex items-center gap-2 text-sm text-ink-soft">
                   <CheckCircle2 className="h-4 w-4 shrink-0" />
                   {WEB3FORMS_ACCESS_KEY
-                    ? "Message sent — we'll get back to you within one business day."
+                    ? "Message sent — we'll get back within one business day."
                     : 'Your email app should now be open with your message pre-filled — just hit send.'}
                 </p>
               )}
               {status === 'error' && (
-                <p className="flex items-center gap-2 text-sm text-red-600">
+                <p className="flex items-center gap-2 text-sm text-ink-soft">
                   <AlertCircle className="h-4 w-4 shrink-0" />
-                  Something went wrong sending that. Please email us directly at hello@projectx.dev.
+                  Something went wrong. Email us at hello@projectx.dev.
                 </p>
               )}
             </form>
-          </Reveal>
-
-          <Reveal delay={0.1} className="flex flex-col gap-6">
-            <div className="card flex flex-col gap-6 rounded-2xl p-7 sm:p-8">
-              {CONTACT_INFO.map((info) => {
-                const Icon = info.icon
-                return (
-                  <div key={info.label} className="flex items-start gap-4">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-ink/5 text-blue">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <p className="text-xs text-ink-faint">{info.label}</p>
-                      <p className="text-sm font-medium text-ink">{info.value}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-            <div className="card relative overflow-hidden rounded-2xl p-8 text-center">
-              <div className="animate-blob absolute -top-10 -left-10 h-40 w-40 rounded-full bg-pastel-violet/50 blur-3xl" />
-              <p className="font-display relative text-lg font-bold text-ink">Prefer to talk it through?</p>
-              <p className="relative mt-2 text-sm text-ink-soft">
-                Book a free 15-minute call — no pitch, just a conversation about what you're trying to build.
-              </p>
-            </div>
-          </Reveal>
+          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

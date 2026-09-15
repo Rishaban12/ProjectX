@@ -10,7 +10,7 @@ export default function Marquee({ items }: { items: string[] }) {
             key={i}
             className="font-display flex items-center gap-3 text-lg font-semibold whitespace-nowrap text-ink-faint"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-blue/50" />
+            <span className="h-1.5 w-1.5 rounded-full bg-yellow/50" />
             {item}
           </span>
         ))}

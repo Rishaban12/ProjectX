@@ -42,7 +42,7 @@ export default function Resume() {
             return (
               <Reveal key={step.title} delay={i * 0.08}>
                 <div className="card flex h-full flex-col gap-4 rounded-2xl p-6">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-yellow text-ink">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line text-ink-soft">
                     <Icon className="h-5 w-5" />
                   </span>
                   <h3 className="font-display text-lg font-bold text-ink">{step.title}</h3>
@@ -58,8 +58,8 @@ export default function Resume() {
       <section className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="flex h-full flex-col gap-4 rounded-2xl border border-red-500/25 bg-card p-7 shadow-sm">
-              <span className="w-fit rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-600">Before</span>
+            <div className="flex h-full flex-col gap-4 rounded-2xl border border-red-500/25 bg-card p-7 backdrop-blur-xl">
+              <span className="w-fit rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-400">Before</span>
               <ul className="flex flex-col gap-3 text-sm text-ink-faint">
                 <li>Generic template, no keyword targeting</li>
                 <li>Buzzwords without measurable outcomes</li>
@@ -69,21 +69,21 @@ export default function Resume() {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-green/30 bg-card p-7 shadow-sm">
+            <div className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-green/30 bg-card p-7 backdrop-blur-xl">
               <div className="animate-blob absolute -top-10 -right-10 h-40 w-40 rounded-full bg-green/15 blur-3xl" />
               <span className="w-fit rounded-full bg-green/15 px-3 py-1 text-xs font-medium text-green">After ProjectX</span>
               <ul className="relative flex flex-col gap-3 text-sm text-ink">
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> ATS-matched to the exact job description
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> ATS-matched to the exact job description
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> Quantified impact in every bullet
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> Quantified impact in every bullet
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> Skills mapped to current role requirements
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> Skills mapped to current role requirements
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-green" /> AI-tool fluency clearly signaled
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> AI-tool fluency clearly signaled
                 </li>
               </ul>
             </div>
@@ -103,7 +103,7 @@ export default function Resume() {
                 }`}
               >
                 {pkg.highlighted && (
-                  <span className="absolute -top-3 left-7 flex items-center gap-1 rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-ink">
+                  <span className="absolute -top-3 left-7 flex items-center gap-1 rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-bg">
                     <Sparkles className="h-3 w-3" /> Best value
                   </span>
                 )}
@@ -114,7 +114,7 @@ export default function Resume() {
                 <ul className="flex flex-1 flex-col gap-3">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-ink-soft">
-                      <Check className="h-4 w-4 shrink-0 text-orange" />
+                      <Check className="h-4 w-4 shrink-0 text-ink-faint" />
                       {f}
                     </li>
                   ))}
@@ -122,7 +122,7 @@ export default function Resume() {
                 <Link
                   to="/contact"
                   className={`rounded-lg px-5 py-3 text-center text-sm font-semibold transition-transform hover:scale-105 ${
-                    pkg.highlighted ? 'bg-ink text-white' : 'border border-line-strong text-ink'
+                    pkg.highlighted ? 'bg-yellow text-bg' : 'border border-line-strong text-ink'
                   }`}
                 >
                   Choose {pkg.name}

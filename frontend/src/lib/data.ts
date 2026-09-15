@@ -42,9 +42,9 @@ export const SERVICES: Service[] = [
     description:
       'Fast, conversion-ready websites for small and growing industries — built to look bigger than your budget.',
     points: ['Custom UI/UX design', 'E-commerce & booking', 'SEO + performance tuned', 'Ongoing support'],
-    accentBg: 'bg-blue',
-    accentIcon: 'text-white',
-    accentSoft: 'bg-blue/25',
+    accentBg: 'border border-line bg-transparent',
+    accentIcon: 'text-ink-soft',
+    accentSoft: 'bg-ink/5',
     to: '/services#business',
   },
   {
@@ -53,9 +53,9 @@ export const SERVICES: Service[] = [
     description:
       'Mini, major & final-year projects across web, AI/ML, IoT and app development — built with you, not just for you.',
     points: ['1:1 mentorship', 'Report & documentation', 'Viva / demo prep', 'Source code walkthrough'],
-    accentBg: 'bg-green',
-    accentIcon: 'text-white',
-    accentSoft: 'bg-green/25',
+    accentBg: 'border border-line bg-transparent',
+    accentIcon: 'text-ink-soft',
+    accentSoft: 'bg-ink/5',
     to: '/services#students',
   },
   {
@@ -64,9 +64,9 @@ export const SERVICES: Service[] = [
     description:
       'Live sessions on coding foundations, AI adoption & adaptiveness — for students, teams and institutions.',
     points: ['Coding bootcamps', 'AI invasion workshops', 'Hands-on labs', 'Certificates of completion'],
-    accentBg: 'bg-orange',
-    accentIcon: 'text-white',
-    accentSoft: 'bg-orange/25',
+    accentBg: 'border border-line bg-transparent',
+    accentIcon: 'text-ink-soft',
+    accentSoft: 'bg-ink/5',
     to: '/learning',
   },
   {
@@ -75,9 +75,9 @@ export const SERVICES: Service[] = [
     description:
       'ATS-optimized resumes and career positioning built around the technology you are adapting to.',
     points: ['ATS-friendly design', 'LinkedIn optimization', 'Mock interviews', '48-hour turnaround'],
-    accentBg: 'bg-yellow',
-    accentIcon: 'text-ink',
-    accentSoft: 'bg-yellow/25',
+    accentBg: 'border border-line bg-transparent',
+    accentIcon: 'text-ink-soft',
+    accentSoft: 'bg-ink/5',
     to: '/resume',
   },
 ]
@@ -117,35 +117,55 @@ export const PROCESS: ProcessStep[] = [
 ]
 
 export type Testimonial = {
+  id: number
   name: string
   role: string
+  company: string
   quote: string
+  rating: number
+  avatar: string
 }
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    id: 1,
     name: 'Ananya R.',
-    role: 'Founder, Saffron Threads (D2C Textiles)',
+    role: 'Founder',
+    company: 'Saffron Threads',
     quote:
       'ProjectX rebuilt our store in three weeks. Orders went up the same month the new site launched.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&h=200&q=80',
   },
   {
+    id: 2,
     name: 'Mohit Verma',
     role: 'Final-year CSE student',
+    company: 'Campus Lab',
     quote:
       'They didn’t just hand me a project — I understood every module well enough to defend it in my viva.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80',
   },
   {
+    id: 3,
     name: 'Kavya S.',
-    role: 'Ops Lead, a growing logistics startup',
+    role: 'Ops Lead',
+    company: 'Freightline',
     quote:
       'The AI adaptiveness session finally made "using AI at work" concrete for our whole team, not just buzzwords.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&h=200&q=80',
   },
   {
+    id: 4,
     name: 'Rehan Öztürk',
-    role: 'Career switcher, ex-mechanical engineer',
+    role: 'Career switcher',
+    company: 'Ex-mechanical engineer',
     quote:
       'New resume, new LinkedIn, and a coding roadmap — I had three interviews lined up within a month.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&h=200&q=80',
   },
 ]
 

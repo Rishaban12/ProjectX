@@ -9,12 +9,17 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue">
-                <Zap className="h-5 w-5 text-white" strokeWidth={2.5} />
+            <Link
+              to="/"
+              aria-label="ProjectX home"
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+              className="flex items-center gap-2"
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-line text-ink-soft">
+                <Zap className="h-5 w-5" strokeWidth={2} />
               </span>
-              <span className="font-display text-lg font-bold text-ink">
-                Project<span className="text-gradient">X</span>
+              <span className="font-display text-lg text-ink">
+                Project<span className="text-yellow">X</span>
               </span>
             </Link>
             <p className="max-w-xs text-sm text-ink-faint">
@@ -26,7 +31,7 @@ export default function Footer() {
                 <a
                   key={i}
                   href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-blue/50 hover:text-blue"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-line text-ink-soft transition-colors hover:border-line-strong hover:text-ink"
                 >
                   <Icon className="h-4 w-4" />
                 </a>

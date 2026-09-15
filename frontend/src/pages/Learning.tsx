@@ -1,8 +1,10 @@
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
+import StackedCards from '../components/StackedCards'
+import { AnimatedSpan, Terminal, TypingAnimation } from '../components/Terminal'
 import { FORMATS, LEARNING_TRACKS } from '../lib/data'
 
 export default function Learning() {
@@ -16,37 +18,9 @@ export default function Learning() {
         />
       </section>
 
-      {/* Tracks */}
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 md:grid-cols-2">
-          {LEARNING_TRACKS.map((track, i) => {
-            const Icon = track.icon
-            return (
-              <Reveal key={track.title} delay={i * 0.08}>
-                <div className="card flex h-full flex-col gap-5 rounded-2xl p-7">
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange text-white">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-ink-faint">
-                      {track.level}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-ink">{track.title}</h3>
-                  <p className="text-sm text-ink-soft">{track.description}</p>
-                  <ul className="mt-auto grid grid-cols-2 gap-2 border-t border-line pt-4">
-                    {track.topics.map((topic) => (
-                      <li key={topic} className="flex items-center gap-2 text-xs text-ink-faint">
-                        <Check className="h-3.5 w-3.5 shrink-0 text-orange" />
-                        {topic}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            )
-          })}
-        </div>
+      {/* Tracks — sticky scroll stack */}
+      <section className="mx-auto max-w-7xl px-6 pb-8 pt-4">
+        <StackedCards tracks={LEARNING_TRACKS} />
       </section>
 
       {/* Formats */}
@@ -58,7 +32,7 @@ export default function Learning() {
             return (
               <Reveal key={format.title} delay={i * 0.08}>
                 <div className="card flex h-full flex-col items-center gap-4 rounded-2xl p-8 text-center">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-xl bg-ink/5 text-blue">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-xl border border-line text-ink-soft">
                     <Icon className="h-7 w-7" />
                   </span>
                   <h3 className="font-display text-lg font-bold text-ink">{format.title}</h3>
@@ -75,7 +49,7 @@ export default function Learning() {
         <Reveal className="card overflow-hidden rounded-2xl p-8 sm:p-12">
           <div className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
             <div className="flex flex-col gap-5">
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs font-medium text-orange uppercase">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 font-mono text-xs font-medium text-yellow uppercase">
                 Flagship Track
               </span>
               <h2 className="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
@@ -97,18 +71,25 @@ export default function Learning() {
               </div>
               <Link
                 to="/contact"
-                className="group mt-2 inline-flex w-fit items-center gap-2 rounded-lg bg-orange px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+                className="btn-primary group mt-2 hover:scale-105"
               >
                 Reserve Your Seat
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
             <div className="relative flex items-center justify-center">
-              <div className="animate-spin-slow absolute h-56 w-56 rounded-full border border-dashed border-line-strong" />
               <div className="animate-blob absolute h-40 w-40 rounded-full bg-pastel-violet/50 blur-2xl" />
-              <div className="relative flex h-40 w-40 items-center justify-center rounded-full bg-orange text-center">
-                <span className="font-display px-4 text-sm font-bold text-white">6 Weeks · Live · Certified</span>
-              </div>
+              <Terminal className="relative">
+                <TypingAnimation>&gt; Prompt Engineering</TypingAnimation>
+                <AnimatedSpan className="text-ink-faint">✔ Track loaded.</AnimatedSpan>
+                <TypingAnimation>&gt; AI Product Building</TypingAnimation>
+                <AnimatedSpan className="text-ink-faint">✔ Track loaded.</AnimatedSpan>
+                <TypingAnimation>&gt; Workflow Automation</TypingAnimation>
+                <AnimatedSpan className="text-ink-faint">✔ Track loaded.</AnimatedSpan>
+                <TypingAnimation>&gt; Ethics &amp; Guardrails</TypingAnimation>
+                <AnimatedSpan className="text-ink-faint">✔ Track loaded.</AnimatedSpan>
+                <TypingAnimation className="text-ink-faint">Ready to adapt.</TypingAnimation>
+              </Terminal>
             </div>
           </div>
         </Reveal>

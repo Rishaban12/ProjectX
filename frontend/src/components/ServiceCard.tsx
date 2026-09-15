@@ -29,7 +29,7 @@ export default function ServiceCard({ service, delay = 0 }: { service: Service; 
         <ul className="mt-auto flex flex-col gap-2 border-t border-line pt-4">
           {service.points.map((point) => (
             <li key={point} className="flex items-center gap-2 text-xs text-ink-faint">
-              <Check className="h-3.5 w-3.5 shrink-0 text-blue" />
+              <Check className="h-3.5 w-3.5 shrink-0 text-ink-faint" />
               {point}
             </li>
           ))}

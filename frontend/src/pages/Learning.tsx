@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
+import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import StackedCards from '../components/StackedCards'
@@ -10,13 +11,13 @@ import { FORMATS, LEARNING_TRACKS } from '../lib/data'
 export default function Learning() {
   return (
     <>
-      <section className="mx-auto max-w-5xl px-6 pt-40 pb-16 text-center">
-        <SectionHeading
-          eyebrow="Learning Hub"
-          title="Learn the tech that's changing your industry — before it changes without you."
-          description="Live, hands-on sessions on coding, AI adoption and adaptiveness — for students, teams, and institutions."
-        />
-      </section>
+      <PageHero
+        eyebrow="Learning Hub"
+        description="Live, hands-on sessions on coding, AI adoption and adaptiveness — for students, teams, and institutions."
+      >
+        Learn the tech that’s changing your industry — before it changes{' '}
+        <span className="page-hero-accent">without you</span>.
+      </PageHero>
 
       {/* Tracks — sticky scroll stack */}
       <section className="mx-auto max-w-7xl px-6 pb-8 pt-4">

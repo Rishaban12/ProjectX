@@ -195,6 +195,8 @@ export type Track = {
   level: string
   description: string
   topics: string[]
+  image: string
+  imageAlt: string
 }
 
 export const LEARNING_TRACKS: Track[] = [
@@ -204,6 +206,8 @@ export const LEARNING_TRACKS: Track[] = [
     level: 'Beginner → Intermediate',
     description: 'Programming fundamentals, data structures, and web development from first principles.',
     topics: ['Python & JavaScript', 'DSA problem solving', 'Git & GitHub', 'Full-stack basics'],
+    image: '/images/track-coding.png',
+    imageAlt: 'Laptop showing a coding lesson with Python, JavaScript, and a yellow Git commit',
   },
   {
     icon: BrainCircuit,
@@ -211,6 +215,8 @@ export const LEARNING_TRACKS: Track[] = [
     level: 'All levels',
     description: 'Understand where AI is disrupting work, and build the habits to adapt faster than it moves.',
     topics: ['Prompting & AI tools', 'AI in your workflow', 'Responsible AI use', 'Building with AI APIs'],
+    image: '/images/track-ai.png',
+    imageAlt: 'Laptop and tablet showing an AI prompt lab with a yellow Run prompt button',
   },
   {
     icon: Globe2,
@@ -218,6 +224,8 @@ export const LEARNING_TRACKS: Track[] = [
     level: 'Intermediate',
     description: 'Ship real applications with the stacks companies actually use in production.',
     topics: ['React & TypeScript', 'APIs & databases', 'Cloud deployment', 'Performance & security'],
+    image: '/images/track-web.png',
+    imageAlt: 'Laptop and phone showing a React app with a yellow Deploy button',
   },
   {
     icon: Users,
@@ -225,6 +233,8 @@ export const LEARNING_TRACKS: Track[] = [
     level: 'Custom',
     description: 'On-site or virtual sessions tailored to your institution or company’s tech maturity.',
     topics: ['Custom curriculum', 'Hands-on labs', 'Assessments', 'Completion certificates'],
+    image: '/images/track-workshop.png',
+    imageAlt: 'Campus workshop kit with laptops, lab booklet, and a yellow completion certificate',
   },
 ]
 

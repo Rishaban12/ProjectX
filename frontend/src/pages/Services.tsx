@@ -1,9 +1,9 @@
-import { Check, ShoppingBag, Sparkles } from 'lucide-react'
+import { Check, Sparkles } from 'lucide-react'
 import { Boxes, Globe2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
+import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
-import SectionHeading from '../components/SectionHeading'
 
 const BUSINESS_TIERS = [
   {
@@ -63,17 +63,17 @@ const STUDENT_INCLUDES = [
 export default function Services() {
   return (
     <>
-      <section className="mx-auto max-w-5xl px-6 pt-40 pb-16 text-center">
-        <SectionHeading
-          eyebrow="Services"
-          title="Built for businesses that are growing, and students who are building."
-          description="Two very different audiences, one standard: work you can actually launch, submit, and defend."
-        />
-      </section>
+      <PageHero
+        eyebrow="Services"
+        description="Two very different audiences, one standard: work you can actually launch, submit, and defend."
+      >
+        Built for businesses that are growing, and students who are{' '}
+        <span className="page-hero-accent">building</span>.
+      </PageHero>
 
       {/* Business websites */}
       <section id="business" className="mx-auto max-w-7xl scroll-mt-28 px-6 py-16">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+        <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-14">
           <Reveal className="flex flex-col gap-5">
             <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
               <Globe2 className="h-6 w-6" />
@@ -102,12 +102,16 @@ export default function Services() {
               ))}
             </ul>
           </Reveal>
-          <Reveal delay={0.1} className="card relative overflow-hidden rounded-2xl p-8">
-            <div className="animate-blob absolute -top-10 -right-10 h-48 w-48 rounded-full bg-pastel-aqua/60 blur-3xl" />
-            <div className="relative flex flex-col gap-4">
-              <div className="flex items-center gap-2 text-xs text-ink-faint">
-                <ShoppingBag className="h-4 w-4" /> Example industries we serve
-              </div>
+          <Reveal delay={0.1} className="overflow-hidden rounded-2xl border border-line bg-white">
+            <img
+              src="/images/business-website.png"
+              alt="Laptop and phone showing a boutique business website with yellow calls to action"
+              className="block h-auto w-full object-contain"
+            />
+            <div className="border-t border-line px-5 py-4">
+              <p className="mb-2 text-[11px] font-medium tracking-[0.16em] text-ink-faint uppercase">
+                Example industries we serve
+              </p>
               <div className="flex flex-wrap gap-2">
                 {['Retail & D2C', 'Clinics & Wellness', 'Logistics', 'Education', 'Real Estate', 'Restaurants', 'Local Services', 'Manufacturing'].map(
                   (tag) => (
@@ -179,33 +183,18 @@ export default function Services() {
       </section>
 
       {/* Student projects */}
-      <section id="students" className="mx-auto max-w-7xl scroll-mt-28 px-6 py-24">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <Reveal delay={0.1} className="order-2 md:order-1">
-            <div className="card relative overflow-hidden rounded-2xl p-8">
-              <div className="animate-blob absolute -bottom-10 -left-10 h-48 w-48 rounded-full bg-green/20 blur-3xl [animation-delay:4s]" />
-              <div className="relative flex flex-col gap-4">
-                <p className="text-xs text-ink-faint">Domains we cover</p>
-                <div className="flex flex-wrap gap-2">
-                  {STUDENT_DOMAINS.map((d) => (
-                    <span key={d} className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-ink-soft">
-                      {d}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-2 text-xs text-ink-faint">What's included</p>
-                <ul className="flex flex-col gap-2">
-                  {STUDENT_INCLUDES.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-ink-soft">
-                      <Check className="h-4 w-4 shrink-0 text-ink-faint" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      <section id="students" className="mx-auto max-w-7xl scroll-mt-32 px-6 py-24">
+        <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-14">
+          <Reveal className="min-w-0">
+            <div className="overflow-hidden rounded-2xl border border-line bg-white">
+              <img
+                src="/images/student-projects.png"
+                alt="Laptop, project report, and viva slides for a student tech project in yellow and black"
+                className="block h-auto w-full object-contain"
+              />
             </div>
           </Reveal>
-          <Reveal className="order-1 flex flex-col gap-5 md:order-2">
+          <Reveal delay={0.08} className="flex min-w-0 flex-col gap-5">
             <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
               <Boxes className="h-6 w-6" />
             </span>
@@ -228,12 +217,37 @@ export default function Services() {
                 </div>
               ))}
             </div>
-            <Link
-              to="/contact"
-              className="btn-primary mt-2"
-            >
+            <Link to="/contact" className="btn-primary mt-2 w-fit">
               Discuss Your Project Idea
             </Link>
+          </Reveal>
+        </div>
+
+        <div className="mt-10 grid items-start gap-6 md:grid-cols-2">
+          <Reveal className="rounded-2xl border border-line bg-white p-6">
+            <p className="mb-3 text-[11px] font-medium tracking-[0.16em] text-ink-faint uppercase">
+              Domains we cover
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {STUDENT_DOMAINS.map((d) => (
+                <span key={d} className="rounded-full border border-line bg-surface px-3 py-1.5 text-xs text-ink-soft">
+                  {d}
+                </span>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.06} className="rounded-2xl border border-line bg-white p-6">
+            <p className="mb-3 text-[11px] font-medium tracking-[0.16em] text-ink-faint uppercase">
+              What's included
+            </p>
+            <ul className="flex flex-col gap-2">
+              {STUDENT_INCLUDES.map((f) => (
+                <li key={f} className="flex items-center gap-2 text-sm text-ink-soft">
+                  <Check className="h-4 w-4 shrink-0 text-ink-faint" />
+                  {f}
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>

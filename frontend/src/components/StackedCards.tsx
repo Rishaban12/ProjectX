@@ -33,32 +33,43 @@ function StackedCard({
     >
       <motion.div
         style={{ scale, opacity, transformOrigin: 'top center' }}
-        className="mx-auto w-full max-w-3xl"
+        className="mx-auto w-full max-w-5xl"
       >
-        <div className="card flex flex-col gap-5 rounded-2xl p-7 sm:p-9">
-          <div className="flex items-center justify-between gap-4">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
-              <Icon className="h-6 w-6" />
-            </span>
-            <div className="flex items-center gap-3">
-              <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-ink-faint">
-                {track.level}
-              </span>
-              <span className="font-mono text-xs text-ink-faint">
-                {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-              </span>
+        <div className="overflow-hidden rounded-2xl border border-line bg-white">
+          <div className="grid items-stretch md:grid-cols-2">
+            <div className="flex items-center justify-center border-b border-line bg-white md:border-r md:border-b-0">
+              <img
+                src={track.image}
+                alt={track.imageAlt}
+                className="block h-auto w-full object-contain"
+              />
+            </div>
+            <div className="flex flex-col gap-5 p-7 sm:p-9">
+              <div className="flex items-center justify-between gap-4">
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl border border-line text-ink-soft">
+                  <Icon className="h-6 w-6" />
+                </span>
+                <div className="flex items-center gap-3">
+                  <span className="rounded-full border border-line bg-surface px-3 py-1 text-xs text-ink-faint">
+                    {track.level}
+                  </span>
+                  <span className="font-mono text-xs text-ink-faint">
+                    {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+              <h3 className="font-display text-2xl font-bold text-ink sm:text-3xl">{track.title}</h3>
+              <p className="text-sm text-ink-soft sm:text-base">{track.description}</p>
+              <ul className="mt-auto grid grid-cols-1 gap-2 border-t border-line pt-4 sm:grid-cols-2">
+                {track.topics.map((topic) => (
+                  <li key={topic} className="flex items-center gap-2 text-sm text-ink-faint">
+                    <Check className="h-3.5 w-3.5 shrink-0 text-ink-faint" />
+                    {topic}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-          <h3 className="font-display text-2xl font-bold text-ink sm:text-3xl">{track.title}</h3>
-          <p className="max-w-2xl text-sm text-ink-soft sm:text-base">{track.description}</p>
-          <ul className="mt-auto grid grid-cols-1 gap-2 border-t border-line pt-4 sm:grid-cols-2">
-            {track.topics.map((topic) => (
-              <li key={topic} className="flex items-center gap-2 text-sm text-ink-faint">
-                <Check className="h-3.5 w-3.5 shrink-0 text-ink-faint" />
-                {topic}
-              </li>
-            ))}
-          </ul>
         </div>
       </motion.div>
     </article>

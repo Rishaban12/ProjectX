@@ -1,7 +1,9 @@
 import { Check, FileText, MessageCircle, Sparkles, Target } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import CTASection from '../components/CTASection'
+import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
+import ResumeStudioDemo from '../components/ResumeStudioDemo'
 import SectionHeading from '../components/SectionHeading'
 import { LinkedinIcon } from '../components/BrandIcons'
 
@@ -26,13 +28,13 @@ const PACKAGES = [
 export default function Resume() {
   return (
     <>
-      <section className="mx-auto max-w-5xl px-6 pt-40 pb-16 text-center">
-        <SectionHeading
-          eyebrow="Resume & Career Studio"
-          title="A resume that reflects the technology you've actually adapted to."
-          description="ATS-optimized, recruiter-tested, and built around the skills that matter for where you're headed next."
-        />
-      </section>
+      <PageHero
+        eyebrow="Resume & Career Studio"
+        description="ATS-optimized, recruiter-tested, and built around the skills that matter for where you're headed next."
+      >
+        A resume that reflects the technology you’ve actually{' '}
+        <span className="page-hero-accent">adapted to</span>.
+      </PageHero>
 
       {/* Process */}
       <section className="mx-auto max-w-7xl px-6 py-16">
@@ -54,12 +56,17 @@ export default function Resume() {
         </div>
       </section>
 
-      {/* Before / after style comparison */}
+      {/* Animated rewrite + before / after */}
       <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-6 md:grid-cols-2">
-          <Reveal>
-            <div className="flex h-full flex-col gap-4 rounded-2xl border border-red-500/25 bg-card p-7 backdrop-blur-xl">
-              <span className="w-fit rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-400">Before</span>
+        <div className="grid items-start gap-10 md:grid-cols-2 lg:gap-14">
+          <Reveal className="min-w-0">
+            <ResumeStudioDemo />
+          </Reveal>
+          <Reveal delay={0.08} className="flex min-w-0 flex-col gap-6">
+            <div className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-7">
+              <span className="w-fit rounded-sm border border-line px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-ink-faint uppercase">
+                Before
+              </span>
               <ul className="flex flex-col gap-3 text-sm text-ink-faint">
                 <li>Generic template, no keyword targeting</li>
                 <li>Buzzwords without measurable outcomes</li>
@@ -67,23 +74,22 @@ export default function Resume() {
                 <li>No AI / modern-tool literacy signaled</li>
               </ul>
             </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="relative flex h-full flex-col gap-4 overflow-hidden rounded-2xl border border-green/30 bg-card p-7 backdrop-blur-xl">
-              <div className="animate-blob absolute -top-10 -right-10 h-40 w-40 rounded-full bg-green/15 blur-3xl" />
-              <span className="w-fit rounded-full bg-green/15 px-3 py-1 text-xs font-medium text-green">After ProjectX</span>
-              <ul className="relative flex flex-col gap-3 text-sm text-ink">
+            <div className="flex flex-col gap-4 rounded-2xl border border-yellow/50 bg-yellow/10 p-7">
+              <span className="w-fit rounded-sm bg-yellow px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-ink uppercase">
+                After ProjectX
+              </span>
+              <ul className="flex flex-col gap-3 text-sm text-ink">
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> ATS-matched to the exact job description
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" /> ATS-matched to the exact job description
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> Quantified impact in every bullet
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" /> Quantified impact in every bullet
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> Skills mapped to current role requirements
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" /> Skills mapped to current role requirements
                 </li>
                 <li className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink-faint" /> AI-tool fluency clearly signaled
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-ink" /> AI-tool fluency clearly signaled
                 </li>
               </ul>
             </div>

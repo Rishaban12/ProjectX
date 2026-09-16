@@ -87,6 +87,34 @@
   to { stroke-dashoffset: -48; }
 }
 
+@keyframes resume-scan {
+  0% { transform: translateY(-8%); opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { transform: translateY(108%); opacity: 0; }
+}
+
+@keyframes resume-bar {
+  from { transform: scaleX(0.18); }
+  to { transform: scaleX(1); }
+}
+
+.resume-scan-line {
+  animation: resume-scan 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.resume-skill-fill {
+  transform-origin: left center;
+  animation: resume-bar 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-scan-line,
+  .resume-skill-fill {
+    animation: none;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: light;
@@ -115,6 +143,15 @@ body::after {
   font-weight: 700;
   letter-spacing: -0.045em;
   text-transform: none;
+}
+
+.page-hero-grid {
+  background-image: radial-gradient(rgba(20, 21, 28, 0.1) 1.15px, transparent 1.15px);
+  background-size: 22px 22px;
+}
+
+.page-hero-accent {
+  color: var(--color-yellow);
 }
 
 ::selection {

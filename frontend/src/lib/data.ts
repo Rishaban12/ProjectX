@@ -33,7 +33,6 @@ export type Service = {
   description: string
   points: string[]
   video: string
-  poster: string
   accentBg: string
   accentIcon: string
   accentSoft: string
@@ -50,8 +49,7 @@ export const SERVICES: Service[] = [
     description:
       'Fast, conversion-ready websites for small and growing industries — built to look bigger than your budget.',
     points: ['Custom UI/UX design', 'E-commerce & booking', 'SEO + performance tuned', 'Ongoing support'],
-    video: 'https://videos.pexels.com/video-files/2278095/2278095-hd_1280_720_30fps.mp4',
-    poster: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80',
+    video: '/videos/websites.mp4',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -66,8 +64,7 @@ export const SERVICES: Service[] = [
     description:
       'Mini, major & final-year projects across web, AI/ML, IoT and app development — built with you, not just for you.',
     points: ['1:1 mentorship', 'Report & documentation', 'Viva / demo prep', 'Source code walkthrough'],
-    video: 'https://videos.pexels.com/video-files/3209298/3209298-hd_1280_720_25fps.mp4',
-    poster: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80',
+    video: '/videos/student-projects.mp4?v=2',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -82,8 +79,7 @@ export const SERVICES: Service[] = [
     description:
       'Live sessions on coding foundations, AI adoption & adaptiveness — for students, teams and institutions.',
     points: ['Coding bootcamps', 'AI invasion workshops', 'Hands-on labs', 'Certificates of completion'],
-    video: 'https://videos.pexels.com/video-files/3130284/3130284-hd_1280_720_30fps.mp4',
-    poster: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1400&q=80',
+    video: '/videos/learning.mp4',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -98,8 +94,7 @@ export const SERVICES: Service[] = [
     description:
       'ATS-optimized resumes and career positioning built around the technology you are adapting to.',
     points: ['ATS-friendly design', 'LinkedIn optimization', 'Mock interviews', '48-hour turnaround'],
-    video: 'https://videos.pexels.com/video-files/3255275/3255275-hd_1280_720_25fps.mp4',
-    poster: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80',
+    video: '/videos/career.mp4',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',

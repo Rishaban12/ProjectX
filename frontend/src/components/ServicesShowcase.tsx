@@ -133,14 +133,13 @@ export default function ServicesShowcase() {
                       <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
                     </Link>
                   </div>
-                  <div className="relative h-[min(34rem,calc(100svh-8rem))] min-h-[260px] w-full overflow-hidden bg-[#f4f4f4]">
+                  <div className="relative w-full overflow-hidden bg-[#f6f6f4]">
                     <video
                       ref={(node) => {
                         videoRefs.current[index] = node
                       }}
-                      className="absolute inset-0 h-full w-full object-cover"
+                      className="block h-auto w-full object-contain"
                       src={item.video}
-                      poster={item.poster}
                       muted
                       loop
                       playsInline

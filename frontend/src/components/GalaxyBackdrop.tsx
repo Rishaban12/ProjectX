@@ -163,7 +163,7 @@ export default function GalaxyBackdrop() {
       <div className="animate-blob absolute -top-[45%] -left-[12%] h-[78%] w-[58%] rounded-full bg-[#6b4dff]/50 blur-[92px]" />
       <div className="animate-blob absolute -right-[18%] -bottom-[40%] h-[72%] w-[52%] rounded-full bg-[#34e2f0]/28 blur-[100px] [animation-delay:-8s]" />
       <div className="animate-blob absolute top-[18%] right-[22%] h-[46%] w-[38%] rounded-full bg-[#ff7fc0]/28 blur-[80px] [animation-delay:-14s]" />
-      <div className="animate-blob absolute bottom-[8%] left-[28%] h-[36%] w-[30%] rounded-full bg-[#ffd400]/12 blur-[70px] [animation-delay:-4s]" />
+      <div className="animate-blob absolute bottom-[8%] left-[28%] h-[36%] w-[30%] rounded-full bg-[#fed24f]/12 blur-[70px] [animation-delay:-4s]" />
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,9,20,0.28)_58%,rgba(7,9,20,0.72)_100%)]" />
     </div>

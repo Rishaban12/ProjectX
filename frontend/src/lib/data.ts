@@ -153,7 +153,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Founder',
     company: 'Saffron Threads',
     quote:
-      'ProjectX rebuilt our store in three weeks. Orders went up the same month the new site launched.',
+      'Zecqora rebuilt our store in three weeks. Orders went up the same month the new site launched.',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&h=200&q=80',
   },

@@ -76,7 +76,7 @@ export default function Resume() {
             </div>
             <div className="flex flex-col gap-4 rounded-2xl border border-yellow/50 bg-yellow/10 p-7">
               <span className="w-fit rounded-sm bg-yellow px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-ink uppercase">
-                After ProjectX
+                After Zecqora
               </span>
               <ul className="flex flex-col gap-3 text-sm text-ink">
                 <li className="flex items-start gap-2">
@@ -115,7 +115,7 @@ export default function Resume() {
                 )}
                 <div>
                   <h3 className="font-display text-xl font-bold text-ink">{pkg.name}</h3>
-                  <p className="mt-2 text-3xl font-bold text-ink">{pkg.price}</p>
+                  <p className="mt-2 text-3xl font-normal text-ink">{pkg.price}</p>
                 </div>
                 <ul className="flex flex-1 flex-col gap-3">
                   {pkg.features.map((f) => (

@@ -21,7 +21,7 @@ export default function PageHero({
         <span className="inline-flex items-center rounded-sm bg-yellow px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] text-ink uppercase">
           {eyebrow}
         </span>
-        <h1 className="font-display mt-8 max-w-4xl text-5xl leading-[1.06] font-semibold tracking-[-0.045em] text-balance text-ink sm:text-6xl lg:text-[4.85rem] lg:leading-[1.04]">
+        <h1 className="hero-title mt-8 max-w-4xl text-5xl text-balance text-ink sm:text-6xl lg:text-[4.35rem]">
           {children}
         </h1>
         <p className="mt-8 max-w-2xl text-base leading-7 text-ink-soft sm:text-lg sm:leading-8">

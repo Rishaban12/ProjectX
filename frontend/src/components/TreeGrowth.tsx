@@ -45,7 +45,7 @@ function StepNode({
 }
 
 /**
- * How-it-works map: circular step icons around a ProjectX hub,
+ * How-it-works map: circular step icons around a Zecqora hub,
  * connected with Magic UI animated beams.
  */
 export default function TreeGrowth({ steps }: { steps: TreeStep[] }) {
@@ -78,7 +78,7 @@ export default function TreeGrowth({ steps }: { steps: TreeStep[] }) {
           <Circle ref={hubRef} className="size-16 border-0 bg-yellow text-bg shadow-[0_0_28px_rgba(255,212,0,0.35)] sm:size-20">
             <Zap className="h-8 w-8 sm:h-9 sm:w-9" strokeWidth={2} />
           </Circle>
-          <p className="font-display text-sm tracking-wide text-ink">ProjectX</p>
+          <p className="font-display text-sm tracking-wide text-ink">Zecqora</p>
         </div>
 
         <div className="flex flex-row items-start justify-between">

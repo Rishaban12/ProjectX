@@ -3,8 +3,7 @@ import { useRef, type MouseEvent as ReactMouseEvent, type ReactNode } from 'reac
 
 /**
  * Wraps interactive content (buttons, links) so it pulls gently toward
- * the cursor when hovered, and springs back on mouse leave. Also marks
- * itself as a cursor-hover target for <CustomCursor />.
+ * the cursor when hovered, and springs back on mouse leave.
  */
 export default function Magnetic({
   children,
@@ -40,7 +39,6 @@ export default function Magnetic({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: springX, y: springY }}
-      data-cursor-hover
       className={`inline-block ${className}`}
     >
       {children}

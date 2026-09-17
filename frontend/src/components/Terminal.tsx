@@ -190,7 +190,7 @@ export function Terminal({
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <span className="ml-2 font-mono text-[11px] text-ink-faint">projectx — zsh</span>
+        <span className="ml-2 font-mono text-[11px] text-ink-faint">zecqora — zsh</span>
       </div>
       <pre className="min-h-[240px] p-4">
         <code className="font-mono grid gap-y-1 overflow-auto text-ink-soft">{wrappedChildren}</code>

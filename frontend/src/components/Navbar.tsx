@@ -29,7 +29,7 @@ export default function Navbar() {
       >
         <Link
           to="/"
-          aria-label="ProjectX home"
+          aria-label="Zecqora home"
           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
           className="relative z-10 flex items-center gap-2"
         >
@@ -37,7 +37,7 @@ export default function Navbar() {
             <Zap className="h-5 w-5" strokeWidth={2} />
           </span>
           <span className="text-[17px] font-semibold tracking-[-0.03em] text-ink">
-            Project<span className="text-yellow">X</span>
+            <span className="text-yellow">Z</span>ecqora
           </span>
         </Link>
 

@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="flex flex-col gap-4">
             <Link
               to="/"
-              aria-label="ProjectX home"
+              aria-label="Zecqora home"
               onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
               className="flex items-center gap-2"
             >
@@ -19,7 +19,7 @@ export default function Footer() {
                 <Zap className="h-5 w-5" strokeWidth={2} />
               </span>
               <span className="text-[17px] font-semibold tracking-[-0.03em] text-ink">
-                Project<span className="text-yellow">X</span>
+                <span className="text-yellow">Z</span>ecqora
               </span>
             </Link>
             <p className="max-w-xs text-sm text-ink-faint">
@@ -65,7 +65,7 @@ export default function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-semibold text-ink">Get in touch</h4>
             <ul className="flex flex-col gap-3 text-sm text-ink-faint">
-              <li>hello@projectx.dev</li>
+              <li>zecqora@gmail.com</li>
               <li>+91 98765 43210</li>
               <li>Mon–Sat, 10am–7pm IST</li>
             </ul>
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 text-xs text-ink-faint sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} ProjectX. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Zecqora. All rights reserved.</p>
           <p>Build. Learn. Adapt.</p>
         </div>
       </div>

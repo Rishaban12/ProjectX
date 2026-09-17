@@ -18,7 +18,7 @@
   /* Brand + pillar accents — lemon yellow lead, others kept for rare use */
   --color-blue: #5b8cff;
   --color-orange: #ff8a5c;
-  --color-yellow: #ffd400;
+  --color-yellow: #fed24f;
   --color-green: #3ee6a8;
   --color-indigo: #8b6bff;
 
@@ -140,9 +140,16 @@ body::after {
 }
 
 .font-display {
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: -0.045em;
   text-transform: none;
+}
+
+.hero-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -1.5px;
 }
 
 .page-hero-grid {
@@ -157,16 +164,6 @@ body::after {
 ::selection {
   background: var(--color-yellow);
   color: #111111;
-}
-
-@media (pointer: fine) {
-  html.has-custom-cursor,
-  html.has-custom-cursor body,
-  html.has-custom-cursor *,
-  html.has-custom-cursor canvas,
-  html.has-custom-cursor svg {
-    cursor: none !important;
-  }
 }
 
 ::-webkit-scrollbar {
@@ -196,14 +193,14 @@ body::after {
   isolation: isolate;
   overflow: hidden;
   border-radius: 2px;
-  background: var(--color-yellow);
+  background: var(--color-ink);
   padding: 0.9rem 1.45rem;
   font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #111111;
+  color: #ffffff;
   transition: color 280ms ease;
 }
 
@@ -212,14 +209,14 @@ body::after {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: #111111;
+  background: var(--color-yellow);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .btn-primary:hover {
-  color: #ffffff;
+  color: var(--color-ink);
 }
 
 .btn-primary:hover::before {

@@ -37,7 +37,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Name: ${fullName}\nEmail: ${form.email}\nPhone: ${form.phone || '—'}\nInterested in: ${form.interest}\n\nMessage:\n${form.message}`,
     )
-    window.location.href = `mailto:hello@projectx.dev?subject=${subject}&body=${body}`
+    window.location.href = `mailto:zecqora@gmail.com?subject=${subject}&body=${body}`
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -57,7 +57,7 @@ export default function Contact() {
         body: JSON.stringify({
           access_key: WEB3FORMS_ACCESS_KEY,
           subject: `New enquiry: ${form.interest} — ${fullName}`,
-          from_name: 'ProjectX website',
+          from_name: 'Zecqora website',
           name: fullName,
           email: form.email,
           phone: form.phone,
@@ -82,7 +82,7 @@ export default function Contact() {
       <div className="mx-auto max-w-6xl rounded-[2rem] border border-line p-6 sm:p-10 lg:p-14">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex max-w-xl flex-col text-left">
-            <h1 className="font-display text-4xl leading-[1.1] font-bold tracking-tight text-ink sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="hero-title text-4xl text-ink sm:text-5xl lg:text-[3.4rem]">
               A clearer way to start what you’re building.
             </h1>
 
@@ -213,7 +213,7 @@ export default function Contact() {
               {status === 'error' && (
                 <p className="flex items-center gap-2 text-sm text-ink-soft">
                   <AlertCircle className="h-4 w-4 shrink-0" />
-                  Something went wrong. Email us at hello@projectx.dev.
+                  Something went wrong. Email us at zecqora@gmail.com.
                 </p>
               )}
             </form>

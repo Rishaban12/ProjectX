@@ -15,7 +15,7 @@ const Circle = forwardRef<HTMLDivElement, { className?: string; children?: React
     <div
       ref={ref}
       className={cn(
-        'z-10 flex size-14 items-center justify-center rounded-full border border-line bg-surface text-ink shadow-[0_0_20px_-12px_rgba(0,0,0,0.55)] sm:size-16',
+        'z-10 flex size-14 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white shadow-[0_0_20px_-12px_rgba(0,0,0,0.55)] sm:size-16',
         className,
       )}
     >
@@ -38,8 +38,8 @@ function StepNode({
       <Circle ref={nodeRef}>
         <Icon className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.8} />
       </Circle>
-      <p className="font-display text-center text-base text-ink sm:text-lg">{step.title}</p>
-      <p className="text-center text-xs leading-snug text-ink-faint sm:text-sm">{step.description}</p>
+      <p className="font-display text-center text-base text-white sm:text-lg">{step.title}</p>
+      <p className="text-center text-xs leading-snug text-white/50 sm:text-sm">{step.description}</p>
     </div>
   )
 }
@@ -78,7 +78,7 @@ export default function TreeGrowth({ steps }: { steps: TreeStep[] }) {
           <Circle ref={hubRef} className="size-16 border-0 bg-yellow text-bg shadow-[0_0_28px_rgba(255,212,0,0.35)] sm:size-20">
             <Zap className="h-8 w-8 sm:h-9 sm:w-9" strokeWidth={2} />
           </Circle>
-          <p className="font-display text-sm tracking-wide text-ink">Zecqora</p>
+          <p className="font-display text-sm tracking-wide text-white">Zecqora</p>
         </div>
 
         <div className="flex flex-row items-start justify-between">

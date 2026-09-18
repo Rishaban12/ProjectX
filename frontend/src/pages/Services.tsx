@@ -132,7 +132,7 @@ export default function Services() {
               <div
                 className={`group relative flex h-full flex-col gap-6 overflow-hidden rounded-2xl p-7 transition-transform duration-300 sm:p-8 ${
                   tier.highlighted
-                    ? 'border border-yellow/50 bg-gradient-to-b from-yellow/10 to-transparent shadow-[0_30px_80px_-30px_rgba(255,212,0,0.35)] md:-translate-y-6 md:scale-[1.03]'
+                    ? 'border-2 border-ink bg-ink/5 shadow-[0_30px_80px_-30px_rgba(16,42,36,0.25)] md:-translate-y-6 md:scale-[1.03]'
                     : 'card hover:-translate-y-1'
                 }`}
               >
@@ -142,7 +142,7 @@ export default function Services() {
                 </span>
 
                 {tier.highlighted && (
-                  <span className="relative flex w-fit items-center gap-1 self-end rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-bg">
+                  <span className="relative flex w-fit items-center gap-1 self-end rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold text-ink">
                     <Sparkles className="h-3 w-3" /> {tier.tag}
                   </span>
                 )}

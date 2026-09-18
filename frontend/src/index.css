@@ -6,20 +6,20 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* Base surfaces — light */
-  --color-bg: #ffffff;
-  --color-surface: #ffffff;
-  --color-card: rgba(17, 18, 24, 0.04);
-  --color-ink: #14151c;
+  --color-bg: #eae7dc;
+  --color-surface: #eae7dc;
+  --color-card: rgba(16, 42, 36, 0.04);
+  --color-ink: #102a24;
   --color-ink-soft: #3f4354;
   --color-ink-faint: #6d7285;
-  --color-line: rgba(17, 18, 24, 0.1);
-  --color-line-strong: rgba(17, 18, 24, 0.18);
+  --color-line: rgba(16, 42, 36, 0.1);
+  --color-line-strong: rgba(16, 42, 36, 0.18);
 
   /* Brand + pillar accents — lemon yellow lead, others kept for rare use */
   --color-blue: #5b8cff;
   --color-orange: #ff8a5c;
   --color-yellow: #fed24f;
-  --color-green: #3ee6a8;
+  --color-green: #0b1715;
   --color-indigo: #8b6bff;
 
   /* Nebula / gradient accents */
@@ -40,10 +40,10 @@
   --color-input: var(--color-line-strong);
   --color-ring: var(--color-yellow);
   --color-primary: var(--color-yellow);
-  --color-primary-foreground: #111111;
+  --color-primary-foreground: #102a24;
   --color-secondary: var(--color-surface);
   --color-secondary-foreground: var(--color-ink);
-  --color-accent: rgba(17, 18, 24, 0.05);
+  --color-accent: rgba(16, 42, 36, 0.05);
   --color-accent-foreground: var(--color-ink);
   --radius: 0.5rem;
 
@@ -141,7 +141,7 @@ body::after {
 
 .font-display {
   font-weight: 400;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.015em;
   text-transform: none;
 }
 
@@ -152,32 +152,32 @@ body::after {
   letter-spacing: -1.5px;
 }
 
-.page-hero-grid {
-  background-image: radial-gradient(rgba(20, 21, 28, 0.1) 1.15px, transparent 1.15px);
-  background-size: 22px 22px;
-}
-
 .page-hero-accent {
   color: var(--color-yellow);
 }
 
 ::selection {
   background: var(--color-yellow);
-  color: #111111;
+  color: #102a24;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 16px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-line-strong);
-  border-radius: 999px;
+  background: #9ca3af;
+  border-radius: 500px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-yellow);
+  background: #d1d5db;
+}
+
+html {
+  scrollbar-width: auto;
+  scrollbar-color: #9ca3af #000000;
 }
 
 .text-gradient {
@@ -189,10 +189,7 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  border-radius: 2px;
+  border-radius: 10px;
   background: var(--color-ink);
   padding: 0.9rem 1.45rem;
   font-family: var(--font-sans);
@@ -201,26 +198,6 @@ body::after {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #ffffff;
-  transition: color 280ms ease;
-}
-
-.btn-primary::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--color-yellow);
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.btn-primary:hover {
-  color: var(--color-ink);
-}
-
-.btn-primary:hover::before {
-  transform: scaleX(1);
 }
 
 .btn-secondary {
@@ -228,23 +205,23 @@ body::after {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  border-radius: 2px;
-  border: 1px solid #111111;
-  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #102a24;
+  background: #f8f6ee;
   padding: 0.88rem 1.45rem;
   font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #111111;
+  color: #102a24;
   transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
 }
 
 .btn-secondary:hover {
-  background: var(--color-yellow);
-  border-color: var(--color-yellow);
-  color: #111111;
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: #ffffff;
 }
 
 .btn-secondary-on-dark {
@@ -254,9 +231,9 @@ body::after {
 }
 
 .btn-secondary-on-dark:hover {
-  background: var(--color-yellow);
-  border-color: var(--color-yellow);
-  color: #111111;
+  background: #ffffff;
+  border-color: #ffffff;
+  color: var(--color-ink);
 }
 
 .card {
@@ -274,7 +251,7 @@ body::after {
 }
 
 .card:hover {
-  border-color: rgba(17, 18, 24, 0.22);
+  border-color: rgba(16, 42, 36, 0.22);
   box-shadow:
     0 1px 0 0 rgba(255, 255, 255, 0.7) inset,
     0 0 24px rgba(255, 212, 0, 0.16),

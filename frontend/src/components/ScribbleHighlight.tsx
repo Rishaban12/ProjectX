@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 /**
  * Wraps text with a hand-drawn highlighter-marker scribble behind it —
@@ -8,12 +8,14 @@ import type { ReactNode } from 'react'
 export default function ScribbleHighlight({
   children,
   className = '',
+  style,
 }: {
   children: ReactNode
   className?: string
+  style?: CSSProperties
 }) {
   return (
-    <span className={`relative inline-block whitespace-nowrap ${className}`}>
+    <span className={`relative inline-block whitespace-nowrap ${className}`} style={style}>
       <svg
         viewBox="0 0 320 100"
         preserveAspectRatio="none"

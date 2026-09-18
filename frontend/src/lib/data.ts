@@ -17,11 +17,73 @@ import {
 export type NavLink = { label: string; to: string }
 
 export const NAV_LINKS: NavLink[] = [
-  { label: 'Home', to: '/' },
   { label: 'Services', to: '/services' },
-  { label: 'Learning Hub', to: '/learning' },
-  { label: 'Resume Studio', to: '/resume' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'Why us', to: '/' },
+  { label: 'Resources', to: '/learning' },
+  { label: 'Connect', to: '/contact' },
+]
+
+export const WHY_US_MENU: NavLink[] = [
+  { label: 'About Us', to: '/about' },
+  { label: 'Manifesto', to: '/manifesto' },
+  { label: 'Careers', to: '/careers' },
+]
+
+export const RESOURCES_MENU: NavLink[] = [
+  { label: 'Blog', to: '/blog' },
+  { label: 'Wall of Voices', to: '/wall-of-voices' },
+]
+
+export type ServicesMenuItem = { label: string; to: string; hot?: boolean; description?: string }
+export type ServicesMenuCategory = { label: string; items: ServicesMenuItem[] }
+
+export function slugifyService(label: string): string {
+  return label
+    .toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
+export const SERVICES_MENU: ServicesMenuCategory[] = [
+  {
+    label: 'Rural Tech Empowerment',
+    items: [
+      { label: 'Project Learning', to: '/services' },
+      { label: 'Katral', to: '/learning' },
+    ],
+  },
+  {
+    label: 'Software Solutions',
+    items: [
+      { label: 'Product & MVP Development', to: '/services#business' },
+      { label: 'Web Application Development', to: '/services#business' },
+      { label: 'Mobile Application Development', to: '/services#business' },
+      { label: 'SaaS Product Development', to: '/services#business' },
+      { label: 'Enterprise Software Solutions', to: '/services#business' },
+      { label: 'Legacy System Modernization', to: '/services#business' },
+    ],
+  },
+  {
+    label: 'AI & Automation',
+    items: [
+      { label: 'Generative AI Systems', to: '/services' },
+      { label: 'AI Agent & Autonomous Systems', to: '/services' },
+      { label: 'AI Automation & Intelligent Workflows', to: '/services' },
+      { label: 'RAG & Knowledge Intelligence', to: '/services' },
+      { label: 'Multimodal & Conversational AI', to: '/services' },
+      { label: 'Computer Vision & Predictive Intelligence', to: '/services' },
+      { label: 'Custom AI Solutions', to: '/services' },
+    ],
+  },
+  {
+    label: 'Consulting Services',
+    items: [
+      { label: 'AI Adoption Consulting', to: '/learning' },
+      { label: 'Technology Consulting', to: '/learning' },
+      { label: 'Software Consulting', to: '/learning' },
+    ],
+  },
 ]
 
 export type Service = {
@@ -187,6 +249,46 @@ export const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&h=200&q=80',
   },
+  {
+    id: 5,
+    name: 'Priya Nair',
+    role: 'Co-founder',
+    company: 'Kadai Kart',
+    quote:
+      'We went from a spreadsheet-run business to a real storefront with inventory and payments in under a month.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&h=200&q=80',
+  },
+  {
+    id: 6,
+    name: 'Arjun Menon',
+    role: 'Third-year ECE student',
+    company: 'Campus Lab',
+    quote:
+      'My final-year project actually worked on demo day — and I could explain every design decision to the panel.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&h=200&q=80',
+  },
+  {
+    id: 7,
+    name: 'Divya Krishnan',
+    role: 'Head of Ops',
+    company: 'Northlane Logistics',
+    quote:
+      'The workflow automation session paid for itself in the first week — we cut a two-hour daily task down to ten minutes.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&h=200&q=80',
+  },
+  {
+    id: 8,
+    name: 'Sanjay Iyer',
+    role: 'Founder',
+    company: 'Vetrina Studio',
+    quote:
+      'Zecqora understood the brand before they understood the tech stack. That order of priorities showed in the final build.',
+    rating: 5,
+    avatar: 'https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=200&h=200&q=80',
+  },
 ]
 
 export type Track = {
@@ -242,4 +344,78 @@ export const FORMATS = [
   { icon: Clock, title: 'Live Cohorts', description: '4–8 week structured batches with weekly live sessions.' },
   { icon: Users, title: '1:1 Mentorship', description: 'Personalized pace, direct feedback, flexible scheduling.' },
   { icon: GraduationCap, title: 'College Workshops', description: 'Full-day or multi-day sessions run on your campus.' },
+]
+
+export type BlogPost = {
+  slug: string
+  title: string
+  excerpt: string
+  category: string
+  author: string
+  date: string
+  readTime: string
+  content: string[]
+}
+
+export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: 'ai-invasion-isnt-hype',
+    title: "Why 'AI Invasion' isn't hype — it's a deadline",
+    excerpt:
+      'Every team we talk to is either adapting to AI-driven workflows or getting quietly outpaced by a competitor who already did.',
+    category: 'AI & Automation',
+    author: 'Zecqora Team',
+    date: 'Aug 12, 2026',
+    readTime: '6 min read',
+    content: [
+      'When we started running "AI Invasion & Adaptiveness" workshops, we expected skepticism. What we got instead was relief — teams finally had a structured way to talk about a shift they could already feel happening around them.',
+      'The pattern is consistent: the tools change fast, but the underlying skill — knowing where automation genuinely helps and where it quietly breaks something important — does not go out of date. That is the skill we build the workshop around.',
+      'If you are deciding whether to invest time in this now versus later, the honest answer is that "later" keeps getting more expensive. The teams that adapt early are the ones setting the pace everyone else has to match.',
+    ],
+  },
+  {
+    slug: 'mvp-scoping-in-48-hours',
+    title: 'From idea to MVP: how we scope a software project in 48 hours',
+    excerpt:
+      'Most delays in early-stage projects come from scope that was never actually agreed on. Here is the process we use to fix that before a single line of code is written.',
+    category: 'Software Engineering',
+    author: 'Zecqora Team',
+    date: 'Jul 28, 2026',
+    readTime: '7 min read',
+    content: [
+      'A vague brief is the single biggest predictor of a late delivery. So before we write any code, we spend 48 hours turning a founder\'s idea into a scoped, sequenced build plan — not a giant spec document nobody will read, but a shared understanding of what ships first and why.',
+      'Day one is discovery: goals, users, constraints, and the one metric that actually matters for launch. Day two is translating that into a build sequence — what is core, what is a fast follow, and what is explicitly out of scope for v1.',
+      'The result is not a smaller idea. It is a sharper one — and a team that knows exactly what "done" looks like for the first release.',
+    ],
+  },
+  {
+    slug: 'resume-mistake-costing-interviews',
+    title: 'The resume mistake that costs students interviews',
+    excerpt:
+      'It is not a typo, and it is not the template. It is listing what you did instead of what changed because you did it.',
+    category: 'Career',
+    author: 'Zecqora Team',
+    date: 'Jul 14, 2026',
+    readTime: '5 min read',
+    content: [
+      'We review a lot of student resumes, and the most common issue has nothing to do with formatting. It is that every bullet point describes a task — "built a web app," "worked on a team project" — instead of an outcome.',
+      'Recruiters skim. A bullet that states a task asks them to imagine the impact themselves, and most will not bother. A bullet that states the outcome — faster load times, more sign-ups, a working demo shipped ahead of schedule — does that work for them.',
+      'The fix is not a rewrite of your whole resume. It is going bullet by bullet and asking one question: so what happened because of this? That answer is usually the sentence that should have been there all along.',
+    ],
+  },
+  {
+    slug: 'rag-vs-fine-tuning',
+    title: 'RAG vs fine-tuning: picking the right tool for your AI feature',
+    excerpt:
+      "They solve different problems. Reaching for the wrong one is why so many teams' first AI feature underperforms.",
+    category: 'AI & Automation',
+    author: 'Zecqora Team',
+    date: 'Jun 30, 2026',
+    readTime: '8 min read',
+    content: [
+      'Fine-tuning teaches a model a new skill or style. RAG (retrieval-augmented generation) gives a model access to facts it did not already know. Confusing the two is the fastest way to burn a budget on the wrong solution.',
+      'If your problem is "the model does not know about our product, our docs, or last week\'s data," that is a retrieval problem — RAG. If your problem is "the model knows the facts but does not sound like us, or does not follow our specific format," that is a fine-tuning problem.',
+      'Most of the AI features we build for clients turn out to be retrieval problems wearing a fine-tuning costume. Getting that diagnosis right up front is usually worth more than any amount of prompt tweaking after the fact.',
+    ],
+  },
 ]

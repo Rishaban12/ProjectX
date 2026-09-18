@@ -51,8 +51,8 @@ export default function GalaxyBackdrop() {
       canvas.style.height = `${height}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      const count = Math.round((width * height) / 2400)
-      stars = Array.from({ length: Math.max(48, count) }, () => ({
+      const count = Math.round((width * height) / 900)
+      stars = Array.from({ length: Math.max(140, count) }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
         r: Math.random() < 0.14 ? 1.55 : Math.random() * 1.05 + 0.28,
@@ -148,7 +148,7 @@ export default function GalaxyBackdrop() {
   }, [])
 
   return (
-    <div ref={wrapRef} className="pointer-events-none absolute inset-0 overflow-hidden bg-[#070914]">
+    <div ref={wrapRef} className="pointer-events-none absolute inset-0 overflow-hidden bg-ink">
       <motion.div
         aria-hidden
         animate={reduceMotion ? undefined : { rotate: 360 }}

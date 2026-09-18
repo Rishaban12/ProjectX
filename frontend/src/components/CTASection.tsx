@@ -15,7 +15,7 @@ export default function CTASection({
   secondary?: { label: string; to: string }
 }) {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-20">
+    <section data-nav-theme="dark" className="mx-auto max-w-7xl px-6 py-20">
       <Reveal className="relative overflow-hidden rounded-2xl border border-white/10 px-8 py-16 text-center sm:px-16">
         <GalaxyBackdrop />
         <div className="relative z-10 flex flex-col items-center gap-6">

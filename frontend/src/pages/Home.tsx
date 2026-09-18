@@ -1,41 +1,42 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, ArrowRight } from 'lucide-react'
+import { ArrowRight, Heart } from 'lucide-react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import Counter from '../components/Counter'
 import CTASection from '../components/CTASection'
-import Marquee from '../components/Marquee'
 import Reveal from '../components/Reveal'
 import ScribbleHighlight from '../components/ScribbleHighlight'
 import SectionHeading from '../components/SectionHeading'
 import ServicesShowcase from '../components/ServicesShowcase'
 import { AnimatedSpan, Terminal, TypingAnimation } from '../components/Terminal'
 import TreeGrowth from '../components/TreeGrowth'
-import { AnimatedTestimonials } from '../components/ui/animated-testimonials'
-import { PROCESS, STATS, TESTIMONIALS } from '../lib/data'
-
-const TECH = [
-  'React',
-  'Next.js',
-  'Node.js',
-  'Python',
-  'TypeScript',
-  'TensorFlow',
-  'MongoDB',
-  'AWS',
-  'Figma',
-  'Tailwind CSS',
-]
+import { PROCESS, TESTIMONIALS } from '../lib/data'
 
 export default function Home() {
   const { scrollY } = useScroll()
   const heroOpacity = useTransform(scrollY, [0, 420], [1, 0])
   const heroY = useTransform(scrollY, [0, 420], [0, 70])
 
+  const darkBandRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: darkBandProgress } = useScroll({
+    target: darkBandRef,
+    offset: ['start end', 'start start'],
+  })
+  const darkBandMarginX = useTransform(darkBandProgress, [0, 1], ['12vw', '0vw'])
+  const darkBandRadius = useTransform(darkBandProgress, [0, 1], ['32px', '0px'])
+
+  const processRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress: processExitProgress } = useScroll({
+    target: processRef,
+    offset: ['end end', 'end start'],
+  })
+  const processMarginX = useTransform(processExitProgress, [0, 1], ['0vw', '12vw'])
+  const processRadius = useTransform(processExitProgress, [0, 1], ['0px', '32px'])
+
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[92vh] overflow-hidden px-6 pt-32 pb-20">
-        <div className="relative z-10 mx-auto max-w-3xl">
+      <section className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-32 pr-6 pb-20 pl-28">
+        <div className="relative z-10 max-w-3xl">
           <motion.div
             style={{ opacity: heroOpacity, y: heroY }}
             className="flex flex-col items-start text-left"
@@ -44,7 +45,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
-              className="hero-title max-w-xl text-5xl text-ink sm:text-6xl lg:text-[4.35rem]"
+              className="hero-title text-5xl text-ink sm:text-6xl lg:text-[4.35rem]"
             >
               Ask for anything, we'll{' '}
               <ScribbleHighlight>
@@ -57,10 +58,11 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-8 max-w-lg text-[15px] leading-7 text-ink-soft sm:text-base"
+              className="mt-8 max-w-3xl text-base leading-7 text-ink-soft sm:text-lg"
             >
-              Zecqora is a technology studio for growing businesses and ambitious students — we design websites,
-              engineer student projects, run hands-on AI &amp; coding sessions, and build the resumes that get you hired.
+              We engineer tailored software and AI solutions built around your business -
+              <br />
+              secure, scalable, and designed to deliver lasting value.
             </motion.p>
 
             <motion.div
@@ -74,41 +76,20 @@ export default function Home() {
                 <ArrowRight className="h-3.5 w-3.5" />
               </Link>
               <Link to="/learning" className="btn-secondary">
-                Explore Learning Hub
+                Connect With Us
               </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.45, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-16 grid w-full max-w-lg grid-cols-2 gap-6 sm:grid-cols-4"
-            >
-              {STATS.map((stat) => (
-                <div key={stat.label} className="flex flex-col items-start gap-1">
-                  <span className="font-display text-2xl font-bold text-ink sm:text-3xl">
-                    <Counter value={stat.value} />
-                  </span>
-                  <span className="text-left text-xs text-ink-faint">{stat.label}</span>
-                </div>
-              ))}
             </motion.div>
           </motion.div>
         </div>
-
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-ink-faint"
-        >
-          <ArrowDown className="h-5 w-5" />
-        </motion.div>
       </section>
 
-      <Marquee items={TECH} />
-
       {/* Learning highlight — dark promo band, right after the hero */}
-      <section className="relative overflow-hidden bg-ink px-6 py-24 text-center">
+      <motion.section
+        ref={darkBandRef}
+        data-nav-theme="dark"
+        style={{ marginLeft: darkBandMarginX, marginRight: darkBandMarginX, borderRadius: darkBandRadius }}
+        className="relative overflow-hidden bg-ink px-6 py-24 text-center"
+      >
         <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-6">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 font-mono text-xs font-medium text-yellow uppercase">
             AI Invasion &amp; Adaptiveness
@@ -142,43 +123,68 @@ export default function Home() {
             <TypingAnimation className="text-white/50">Ready to adapt.</TypingAnimation>
           </Terminal>
         </Reveal>
-      </section>
+      </motion.section>
 
       <ServicesShowcase />
 
-      {/* Process — grows in as a tree while you scroll */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <SectionHeading
-          eyebrow="How it works"
-          title="A process that keeps you in the loop"
-          description="Four steps. One studio. You stay in the loop from first brief to launch."
-        />
-        <div className="mt-8">
-          <TreeGrowth steps={PROCESS} />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <AnimatedTestimonials
-            className="bg-transparent py-0"
-            badgeText="Trusted by"
-            title="Businesses, students, and career switchers"
-            subtitle="A few of the people we've built with."
-            autoRotateInterval={6000}
-            // trustedCompaniesTitle="Teams and stacks we work with"
-            // trustedCompanies={['Google', 'Microsoft', 'Airbnb', 'Spotify', 'Netflix']}
-            testimonials={TESTIMONIALS.map((item) => ({
-              id: item.id,
-              name: item.name,
-              role: item.role,
-              company: item.company,
-              content: item.quote,
-              rating: item.rating,
-              avatar: item.avatar,
-            }))}
+      {/* Process — grows in as a tree while you scroll, zooms out as you leave */}
+      <motion.section
+        ref={processRef}
+        data-nav-theme="dark"
+        style={{ marginLeft: processMarginX, marginRight: processMarginX, borderRadius: processRadius }}
+        className="relative overflow-hidden bg-ink px-6 py-24"
+      >
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="How it works"
+            title="A process that keeps you in the loop"
+            description="Four steps. One studio. You stay in the loop from first brief to launch."
+            variant="dark"
           />
+          <div className="mt-8">
+            <TreeGrowth steps={PROCESS} />
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Testimonials — Wall of Voices teaser */}
+      <section className="px-6 py-24">
+        <div className="mx-auto max-w-6xl">
+          <Reveal className="flex flex-col items-center gap-4 text-center">
+            <span className="text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
+              Wall of Voices
+            </span>
+            <h2 className="font-display relative inline-flex items-start gap-2 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+              Hear what our clients have to say.
+              <Heart className="mt-1 h-6 w-6 shrink-0 -rotate-6 text-yellow" strokeWidth={1.5} />
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3">
+            {TESTIMONIALS.slice(0, 4).map((t, i) => (
+              <Reveal key={t.id} delay={i * 0.06} className="mb-6 break-inside-avoid">
+                <div className="card flex flex-col gap-4 rounded-2xl p-6">
+                  <div className="flex items-center gap-3">
+                    <img src={t.avatar} alt={t.name} className="h-10 w-10 rounded-full object-cover" />
+                    <div>
+                      <p className="text-sm font-semibold text-ink">{t.name}</p>
+                      <p className="text-xs text-ink-faint">
+                        {t.role} · {t.company}
+                      </p>
+                    </div>
+                  </div>
+                  <p className="text-sm leading-6 text-ink-soft">{t.quote}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link to="/wall-of-voices" className="btn-primary group">
+              See the Wall of Voices
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
       </section>
 

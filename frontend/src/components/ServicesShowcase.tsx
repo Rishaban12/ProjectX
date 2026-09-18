@@ -50,13 +50,13 @@ export default function ServicesShowcase() {
   }
 
   return (
-    <section className="relative font-sans">
+    <section data-nav-theme="dark" className="relative bg-ink font-sans">
       <div className="mx-auto max-w-4xl px-6 pt-24 pb-6 text-center">
-        <p className="text-[11px] font-medium tracking-[0.22em] text-ink-faint uppercase">What we do</p>
-        <h2 className="font-display mt-4 text-4xl leading-[1.12] font-semibold tracking-[-0.04em] text-ink sm:text-5xl lg:text-[3.5rem]">
+        <p className="text-[11px] font-medium tracking-[0.22em] text-white/50 uppercase">What we do</p>
+        <h2 className="font-display mt-4 text-4xl leading-[1.12] font-semibold tracking-[-0.04em] text-white sm:text-5xl lg:text-[3.5rem]">
           Four services. One studio built to ship.
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-ink-soft sm:text-base">
+        <p className="mx-auto mt-5 max-w-2xl text-[15px] leading-7 text-white/70 sm:text-base">
           Pick a lane, or combine them — most of our clients start with a website and end up learning to run it
           themselves.
         </p>
@@ -65,7 +65,7 @@ export default function ServicesShowcase() {
       <div className="mx-auto grid max-w-[92rem] items-start px-6 lg:grid-cols-[11.5rem_minmax(0,1fr)] lg:gap-8 xl:gap-12">
         <nav
           aria-label="Services"
-          className="top-24 z-10 flex gap-2 overflow-x-auto bg-bg py-2 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:gap-5 lg:overflow-visible lg:py-0"
+          className="top-24 z-10 flex gap-2 overflow-x-auto bg-ink py-2 lg:sticky lg:top-0 lg:flex lg:h-svh lg:flex-col lg:justify-center lg:gap-5 lg:overflow-visible lg:py-0"
         >
           {SERVICES.map((item, index) => {
             const selected = index === active
@@ -77,7 +77,7 @@ export default function ServicesShowcase() {
                 aria-current={selected ? 'true' : undefined}
                 className={cn(
                   'flex shrink-0 items-center gap-2.5 rounded-full px-3 py-2 text-left text-[13px] tracking-[-0.01em] transition-colors lg:rounded-none lg:px-0 lg:py-0',
-                  selected ? 'bg-muted text-ink lg:bg-transparent' : 'text-ink-faint hover:text-ink',
+                  selected ? 'bg-white/10 text-white lg:bg-transparent' : 'text-white/50 hover:text-white',
                 )}
               >
                 <span
@@ -114,26 +114,26 @@ export default function ServicesShowcase() {
                         {item.title}
                       </p>
                     </div>
-                    <h3 className="font-display text-[2.15rem] leading-[1.12] font-semibold tracking-[-0.04em] text-ink sm:text-[2.75rem] lg:text-[3.25rem]">
+                    <h3 className="font-display text-[2.15rem] leading-[1.12] font-semibold tracking-[-0.04em] text-white sm:text-[2.75rem] lg:text-[3.25rem]">
                       {item.headline}
                     </h3>
-                    <p className="mt-5 max-w-[28rem] text-[15px] leading-7 text-ink-soft">
+                    <p className="mt-5 max-w-[28rem] text-[15px] leading-7 text-white/70">
                       {item.description}
                     </p>
                     <ul className="mt-6 flex flex-col gap-2.5">
                       {item.points.slice(0, 2).map((point) => (
-                        <li key={point} className="flex items-center gap-2.5 text-[13px] text-ink-soft">
+                        <li key={point} className="flex items-center gap-2.5 text-[13px] text-white/70">
                           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-yellow" />
                           {point}
                         </li>
                       ))}
                     </ul>
-                    <Link to={item.to} className="btn-secondary mt-8">
+                    <Link to={item.to} className="btn-secondary btn-secondary-on-dark mt-8">
                       Experience {item.label}
                       <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2} />
                     </Link>
                   </div>
-                  <div className="relative w-full overflow-hidden bg-[#f6f6f4]">
+                  <div className="relative w-full overflow-hidden rounded-2xl border border-white/10 bg-white/5">
                     <video
                       ref={(node) => {
                         videoRefs.current[index] = node

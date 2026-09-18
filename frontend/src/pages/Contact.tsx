@@ -1,6 +1,5 @@
 import { AlertCircle, Check, CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
-import { EARTH_PINS } from '../lib/earthPins'
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY as string | undefined
 
@@ -99,16 +98,6 @@ export default function Contact() {
             <div className="mt-10">
               <p className="text-xs text-ink-faint">Endorsed by operators we meet</p>
               <div className="mt-3 flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {EARTH_PINS.map((person) => (
-                    <img
-                      key={person.id}
-                      src={person.image}
-                      alt={person.city}
-                      className="h-8 w-8 rounded-full border-2 border-bg object-cover"
-                    />
-                  ))}
-                </div>
                 <p className="max-w-[14rem] text-xs leading-snug text-ink-faint">
                   The studio across Bengaluru, Chennai, Thanjavur &amp; Mannargudi
                 </p>

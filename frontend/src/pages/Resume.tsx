@@ -74,8 +74,8 @@ export default function Resume() {
                 <li>No AI / modern-tool literacy signaled</li>
               </ul>
             </div>
-            <div className="flex flex-col gap-4 rounded-2xl border border-yellow/50 bg-yellow/10 p-7">
-              <span className="w-fit rounded-sm bg-yellow px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-ink uppercase">
+            <div className="flex flex-col gap-4 rounded-2xl border border-line bg-white p-7">
+              <span className="w-fit rounded-sm border border-line bg-surface px-3 py-1 text-[11px] font-semibold tracking-[0.14em] text-ink uppercase">
                 After Zecqora
               </span>
               <ul className="flex flex-col gap-3 text-sm text-ink">
@@ -105,11 +105,11 @@ export default function Resume() {
             <Reveal key={pkg.name}>
               <div
                 className={`relative flex h-full flex-col gap-6 rounded-2xl p-7 ${
-                  pkg.highlighted ? 'border-2 border-yellow bg-yellow/10' : 'card'
+                  pkg.highlighted ? 'border-2 border-ink bg-ink/5' : 'card'
                 }`}
               >
                 {pkg.highlighted && (
-                  <span className="absolute -top-3 left-7 flex items-center gap-1 rounded-full bg-yellow px-3 py-1 text-xs font-semibold text-bg">
+                  <span className="absolute -top-3 left-7 flex items-center gap-1 rounded-full border border-line bg-surface px-3 py-1 text-xs font-semibold text-ink">
                     <Sparkles className="h-3 w-3" /> Best value
                   </span>
                 )}

@@ -263,6 +263,24 @@ html {
   border: 1px solid var(--color-line);
 }
 
+.hero-flow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-flow-canvas {
+  width: 100%;
+  height: 100%;
+  mask-image: linear-gradient(90deg, transparent 18%, #000 46%);
+}
+@media (max-width: 800px) {
+  .hero-flow-canvas {
+    opacity: 0.55;
+    mask-image: linear-gradient(180deg, transparent 4%, #000 24%, #000 80%, transparent 100%);
+  }
+}
+
 @keyframes hero-globe-in {
   from {
     opacity: 0;

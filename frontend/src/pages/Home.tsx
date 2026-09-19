@@ -1,15 +1,13 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowRight, Heart } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import CTASection from '../components/CTASection'
+import HeroFlowField from '../components/HeroFlowField'
+import HomeStudio from '../components/HomeStudio'
 import Reveal from '../components/Reveal'
 import ScribbleHighlight from '../components/ScribbleHighlight'
-import SectionHeading from '../components/SectionHeading'
-import ServicesShowcase from '../components/ServicesShowcase'
 import { AnimatedSpan, Terminal, TypingAnimation } from '../components/Terminal'
-import TreeGrowth from '../components/TreeGrowth'
-import { PROCESS, STATS, TESTIMONIALS } from '../lib/data'
+import { STATS } from '../lib/data'
 
 export default function Home() {
   const { scrollY } = useScroll()
@@ -24,18 +22,11 @@ export default function Home() {
   const darkBandMarginX = useTransform(darkBandProgress, [0, 1], ['12vw', '0vw'])
   const darkBandRadius = useTransform(darkBandProgress, [0, 1], ['32px', '0px'])
 
-  const processRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress: processExitProgress } = useScroll({
-    target: processRef,
-    offset: ['end end', 'end start'],
-  })
-  const processMarginX = useTransform(processExitProgress, [0, 1], ['0vw', '12vw'])
-  const processRadius = useTransform(processExitProgress, [0, 1], ['0px', '32px'])
-
   return (
     <>
       {/* Hero */}
       <section className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-32 pr-6 pb-20 pl-28">
+        <HeroFlowField />
         <div className="relative z-10 max-w-3xl">
           <motion.div
             style={{ opacity: heroOpacity, y: heroY }}
@@ -139,70 +130,7 @@ export default function Home() {
         </Reveal>
       </motion.section>
 
-      <ServicesShowcase />
-
-      {/* Process — grows in as a tree while you scroll, zooms out as you leave */}
-      <motion.section
-        ref={processRef}
-        data-nav-theme="dark"
-        style={{ marginLeft: processMarginX, marginRight: processMarginX, borderRadius: processRadius }}
-        className="relative overflow-hidden bg-ink px-6 py-24"
-      >
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="How it works"
-            title="A process that keeps you in the loop"
-            description="Four steps. One studio. You stay in the loop from first brief to launch."
-            variant="dark"
-          />
-          <div className="mt-8">
-            <TreeGrowth steps={PROCESS} />
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Testimonials — Wall of Voices teaser */}
-      <section className="px-6 py-24">
-        <div className="mx-auto max-w-6xl">
-          <Reveal className="flex flex-col items-center gap-4 text-center">
-            <span className="text-[11px] font-semibold tracking-[0.18em] text-ink-faint uppercase">
-              Wall of Voices
-            </span>
-            <h2 className="font-display relative inline-flex items-start gap-2 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-              Hear what our clients have to say.
-              <Heart className="mt-1 h-6 w-6 shrink-0 -rotate-6 text-yellow" strokeWidth={1.5} />
-            </h2>
-          </Reveal>
-
-          <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3">
-            {TESTIMONIALS.slice(0, 4).map((t, i) => (
-              <Reveal key={t.id} delay={i * 0.06} className="mb-6 break-inside-avoid">
-                <div className="card flex flex-col gap-4 rounded-2xl p-6">
-                  <div className="flex items-center gap-3">
-                    <img src={t.avatar} alt={t.name} className="h-10 w-10 rounded-full object-cover" />
-                    <div>
-                      <p className="text-sm font-semibold text-ink">{t.name}</p>
-                      <p className="text-xs text-ink-faint">
-                        {t.role} · {t.company}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm leading-6 text-ink-soft">{t.quote}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <div className="mt-10 flex justify-center">
-            <Link to="/wall-of-voices" className="btn-primary group">
-              See the Wall of Voices
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <CTASection />
+      <HomeStudio />
     </>
   )
 }

@@ -5,7 +5,7 @@ import { NAV_LINKS } from '../lib/data'
 
 export default function Footer() {
   return (
-    <footer data-nav-theme="dark" className="relative flex min-h-screen flex-col bg-ink">
+    <footer data-nav-theme="dark" className="relative z-20 isolate flex min-h-screen flex-col bg-ink">
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-16">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-6">
           <Link

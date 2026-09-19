@@ -94,6 +94,8 @@ export type Service = {
   description: string
   points: string[]
   video: string
+  image: string
+  imageAlt: string
   accentBg: string
   accentIcon: string
   accentSoft: string
@@ -111,6 +113,8 @@ export const SERVICES: Service[] = [
       'Fast, conversion-ready websites for small and growing industries — built to look bigger than your budget.',
     points: ['Custom UI/UX design', 'E-commerce & booking', 'SEO + performance tuned', 'Ongoing support'],
     video: '/videos/websites.mp4',
+    image: '/images/do-websites.png',
+    imageAlt: 'Laptop and phone showing a boutique business website with yellow buttons',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -126,6 +130,8 @@ export const SERVICES: Service[] = [
       'Mini, major & final-year projects across web, AI/ML, IoT and app development — built with you, not just for you.',
     points: ['1:1 mentorship', 'Report & documentation', 'Viva / demo prep', 'Source code walkthrough'],
     video: '/videos/student-projects.mp4?v=2',
+    image: '/images/do-students.png',
+    imageAlt: 'Laptop, project report, and viva slides for a student tech project',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -141,6 +147,8 @@ export const SERVICES: Service[] = [
       'Live sessions on coding foundations, AI adoption & adaptiveness — for students, teams and institutions.',
     points: ['Coding bootcamps', 'AI invasion workshops', 'Hands-on labs', 'Certificates of completion'],
     video: '/videos/learning.mp4',
+    image: '/images/do-learning.png',
+    imageAlt: 'Live learning session on a laptop with a yellow completion certificate',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -156,6 +164,8 @@ export const SERVICES: Service[] = [
       'ATS-optimized resumes and career positioning built around the technology you are adapting to.',
     points: ['ATS-friendly design', 'LinkedIn optimization', 'Mock interviews', '48-hour turnaround'],
     video: '/videos/career.mp4',
+    image: '/images/do-career.png',
+    imageAlt: 'Resume sheet, ATS score 92, and a LinkedIn-style profile card',
     accentBg: 'border border-line bg-transparent',
     accentIcon: 'text-ink-soft',
     accentSoft: 'bg-ink/5',
@@ -173,28 +183,42 @@ export const STATS: Stat[] = [
   { value: 'AI + Software', label: 'engineered together' },
 ]
 
-export type ProcessStep = { title: string; description: string; icon: LucideIcon }
+export type ProcessStep = {
+  title: string
+  description: string
+  icon: LucideIcon
+  image: string
+  imageAlt: string
+}
 
 export const PROCESS: ProcessStep[] = [
   {
     title: 'Discover',
-    description: 'We learn your goals, audience and constraints — no templates copy-pasted blindly.',
+    description: 'We learn your goals, audience and constraints — no templates copy-pasted blindly. A short conversation turns a rough idea into a brief you can actually build from.',
     icon: MessageSquareText,
+    image: '/images/how-discover.png?v=5',
+    imageAlt: 'Discovery meeting with an intake form, calendar, and project brief',
   },
   {
     title: 'Design',
-    description: 'Wireframes and visual direction you approve before a single line of code is written.',
+    description: 'Wireframes and visual direction you approve before a single line of code is written. You see the product, and sign off, before we start building.',
     icon: Sparkles,
+    image: '/images/how-design.png?v=4',
+    imageAlt: 'Design review with wireframes, color chips, and an approve button',
   },
   {
     title: 'Build',
-    description: 'Agile development with weekly check-ins, using modern, maintainable tech stacks.',
+    description: 'Agile development with weekly check-ins, using modern, maintainable stacks. Small iterations. Visible progress. Built together.',
     icon: Code2,
+    image: '/images/how-build.png?v=6',
+    imageAlt: 'Developer at a laptop with a phone preview and weekly build status',
   },
   {
     title: 'Launch & Grow',
-    description: 'Deployment, training and a support window so your project keeps improving.',
+    description: 'Deployment, training and a support window so your project keeps improving after go-live — not a handoff and disappear.',
     icon: Rocket,
+    image: '/images/how-launch.png?v=4',
+    imageAlt: 'Launch laptop with a Go live button, rocket badge, and support checks',
   },
 ]
 
@@ -354,6 +378,8 @@ export type BlogPost = {
   author: string
   date: string
   readTime: string
+  image: string
+  imageAlt: string
   content: string[]
 }
 
@@ -367,6 +393,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Zecqora Team',
     date: 'Aug 12, 2026',
     readTime: '6 min read',
+    image: '/images/blog-ai-invasion.png?v=2',
+    imageAlt: 'Person pointing at an AI workflow of prompt, tool, and result',
     content: [
       'When we started running "AI Invasion & Adaptiveness" workshops, we expected skepticism. What we got instead was relief — teams finally had a structured way to talk about a shift they could already feel happening around them.',
       'The pattern is consistent: the tools change fast, but the underlying skill — knowing where automation genuinely helps and where it quietly breaks something important — does not go out of date. That is the skill we build the workshop around.',
@@ -382,6 +410,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Zecqora Team',
     date: 'Jul 28, 2026',
     readTime: '7 min read',
+    image: '/images/blog-mvp-scope.png',
+    imageAlt: 'Two people scoping an idea, scope, and MVP on a whiteboard',
     content: [
       'A vague brief is the single biggest predictor of a late delivery. So before we write any code, we spend 48 hours turning a founder\'s idea into a scoped, sequenced build plan — not a giant spec document nobody will read, but a shared understanding of what ships first and why.',
       'Day one is discovery: goals, users, constraints, and the one metric that actually matters for launch. Day two is translating that into a build sequence — what is core, what is a fast follow, and what is explicitly out of scope for v1.',
@@ -397,6 +427,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Zecqora Team',
     date: 'Jul 14, 2026',
     readTime: '5 min read',
+    image: '/images/blog-resume.png',
+    imageAlt: 'Student reviewing a resume with an ATS score of 92',
     content: [
       'We review a lot of student resumes, and the most common issue has nothing to do with formatting. It is that every bullet point describes a task — "built a web app," "worked on a team project" — instead of an outcome.',
       'Recruiters skim. A bullet that states a task asks them to imagine the impact themselves, and most will not bother. A bullet that states the outcome — faster load times, more sign-ups, a working demo shipped ahead of schedule — does that work for them.',
@@ -412,6 +444,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: 'Zecqora Team',
     date: 'Jun 30, 2026',
     readTime: '8 min read',
+    image: '/images/blog-rag.png',
+    imageAlt: 'Side-by-side cards comparing retrieval and model training',
     content: [
       'Fine-tuning teaches a model a new skill or style. RAG (retrieval-augmented generation) gives a model access to facts it did not already know. Confusing the two is the fastest way to burn a budget on the wrong solution.',
       'If your problem is "the model does not know about our product, our docs, or last week\'s data," that is a retrieval problem — RAG. If your problem is "the model knows the facts but does not sound like us, or does not follow our specific format," that is a fine-tuning problem.',

@@ -6,8 +6,8 @@
   --font-mono: "JetBrains Mono", monospace;
 
   /* Base surfaces — light */
-  --color-bg: #eae7dc;
-  --color-surface: #eae7dc;
+  --color-bg: #f7f5ed;
+  --color-surface: #f7f5ed;
   --color-card: rgba(16, 42, 36, 0.04);
   --color-ink: #102a24;
   --color-ink-soft: #3f4354;
@@ -207,7 +207,7 @@ html {
   gap: 0.55rem;
   border-radius: 10px;
   border: 1px solid #102a24;
-  background: #f8f6ee;
+  background: #f7f5ed;
   padding: 0.88rem 1.45rem;
   font-family: var(--font-sans);
   font-size: 0.6875rem;

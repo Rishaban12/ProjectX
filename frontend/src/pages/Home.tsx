@@ -9,7 +9,7 @@ import SectionHeading from '../components/SectionHeading'
 import ServicesShowcase from '../components/ServicesShowcase'
 import { AnimatedSpan, Terminal, TypingAnimation } from '../components/Terminal'
 import TreeGrowth from '../components/TreeGrowth'
-import { PROCESS, TESTIMONIALS } from '../lib/data'
+import { PROCESS, STATS, TESTIMONIALS } from '../lib/data'
 
 export default function Home() {
   const { scrollY } = useScroll()
@@ -80,6 +80,20 @@ export default function Home() {
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Quick highlights strip */}
+      <section className="mx-auto max-w-7xl px-6 pb-16">
+        <div className="grid gap-8 border-t border-line pt-10 sm:grid-cols-5">
+          {STATS.map((stat, i) => (
+            <Reveal key={stat.value} delay={i * 0.06} className="flex flex-col gap-1">
+              <span className="font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">
+                {stat.value}
+              </span>
+              <span className="text-sm text-ink-soft">{stat.label}</span>
+            </Reveal>
+          ))}
         </div>
       </section>
 

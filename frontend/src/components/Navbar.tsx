@@ -45,7 +45,7 @@ export default function Navbar() {
             ? `max-w-4xl rounded-2xl px-4 py-2.5 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.35)] backdrop-blur-xl ${
                 onDark ? 'border-white/10 bg-ink/60' : 'border-transparent bg-surface/95'
               }`
-            : `max-w-[calc(100%-444px)] py-3 backdrop-blur-xl ${
+            : `max-w-[calc(100%-444px)] rounded-2xl px-4 py-3 backdrop-blur-xl ${
                 onDark ? 'border-transparent bg-ink/60' : 'border-transparent bg-surface/80'
               }`
         }`}
@@ -97,7 +97,7 @@ export default function Navbar() {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `flex items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium tracking-[-0.01em] transition-colors ${
+                    `flex items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium whitespace-nowrap tracking-[-0.01em] transition-colors ${
                       onDark
                         ? isActive
                           ? 'text-white hover:bg-white/10'
@@ -119,7 +119,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Link
               to="/contact"
-              className={`btn-primary px-5 py-2.5 ${onDark ? '!bg-bg !text-ink' : ''}`}
+              className={`btn-primary px-5 py-2.5 whitespace-nowrap ${onDark ? '!bg-bg !text-ink' : ''}`}
             >
               Engineer It
             </Link>

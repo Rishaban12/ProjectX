@@ -9,7 +9,6 @@ import {
   Boxes,
   BrainCircuit,
   Users,
-  Award,
   Clock,
   MessageSquareText,
 } from 'lucide-react'
@@ -164,13 +163,14 @@ export const SERVICES: Service[] = [
   },
 ]
 
-export type Stat = { label: string; value: string; icon: LucideIcon }
+export type Stat = { label: string; value: string; icon?: LucideIcon }
 
 export const STATS: Stat[] = [
-  { label: 'Projects delivered', value: '120+', icon: Rocket },
-  { label: 'Students mentored', value: '400+', icon: GraduationCap },
-  { label: 'Learning sessions run', value: '80+', icon: BrainCircuit },
-  { label: 'Client satisfaction', value: '98%', icon: Award },
+  { value: '100%', label: 'built around you' },
+  { value: 'Faster', label: 'with intelligent engineering' },
+  { value: 'Scalable', label: 'technology by design' },
+  { value: 'Any Business', label: 'any technology need' },
+  { value: 'AI + Software', label: 'engineered together' },
 ]
 
 export type ProcessStep = { title: string; description: string; icon: LucideIcon }

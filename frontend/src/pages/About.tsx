@@ -1,4 +1,5 @@
 import CTASection from '../components/CTASection'
+import FloatingStatCards from '../components/FloatingStatCards'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import ScribbleHighlight from '../components/ScribbleHighlight'
@@ -16,6 +17,7 @@ export default function About() {
         eyebrow="About Us"
         description="At Zecqora, we engineer customized software and AI solutions that help businesses grow with secure, scalable and intelligent technology."
         titleSize="text-4xl sm:text-5xl lg:text-[3.5rem]"
+        decoration={<FloatingStatCards />}
       >
         We build technology that moves businesses forward
       </PageHero>

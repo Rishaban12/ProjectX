@@ -40,7 +40,7 @@ export default function ServicesMegaMenu({ onDark = false }: { onDark?: boolean 
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex cursor-pointer items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium tracking-[-0.01em] transition-colors ${
+        className={`flex cursor-pointer items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium whitespace-nowrap tracking-[-0.01em] transition-colors ${
           onDark
             ? isActive
               ? 'text-white hover:bg-white/10'
@@ -94,6 +94,7 @@ export default function ServicesMegaMenu({ onDark = false }: { onDark?: boolean 
                 <Link
                   key={item.label}
                   to={GENERIC_TARGETS.includes(item.to) ? `/services/${slugifyService(item.label)}` : item.to}
+                  onClick={() => setOpen(false)}
                   className={`flex items-start justify-between gap-2 rounded-[10px] px-3 py-2.5 text-sm transition-colors ${
                     onDark
                       ? 'text-white/85 hover:bg-white/5 hover:text-white'

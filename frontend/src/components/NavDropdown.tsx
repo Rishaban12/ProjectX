@@ -39,7 +39,7 @@ export default function NavDropdown({ label, to, items, onDark = false }: NavDro
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`flex cursor-pointer items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium tracking-[-0.01em] transition-colors ${
+        className={`flex cursor-pointer items-center gap-1 rounded-[10px] px-4 py-2 text-[15px] font-medium whitespace-nowrap tracking-[-0.01em] transition-colors ${
           onDark
             ? isActive
               ? 'text-white hover:bg-white/10'
@@ -70,6 +70,7 @@ export default function NavDropdown({ label, to, items, onDark = false }: NavDro
               <Link
                 key={item.label}
                 to={item.to}
+                onClick={() => setOpen(false)}
                 className={`block rounded-[10px] px-3 py-2.5 text-sm transition-colors ${
                   onDark ? 'text-white/85 hover:bg-white/5 hover:text-white' : 'text-ink-soft hover:bg-ink/5 hover:text-ink'
                 }`}
